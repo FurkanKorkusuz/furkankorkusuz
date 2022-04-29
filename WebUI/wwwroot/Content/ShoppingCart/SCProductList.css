@@ -1,0 +1,247 @@
+﻿#body-container {
+    background-color: rgb(240, 240,240);
+}
+#shopping-basket-container {
+    margin: auto;
+    width: 90%;
+}
+@media (max-width: 750px) {
+    #shopping-basket-container {
+        width: 98%;
+    }
+    .SC-product-image img {
+        width: 100px;
+    }
+}
+
+
+
+@media (max-width: 750px) {
+   
+
+    .SC-product-image img {
+        width: 100px;
+    }
+}
+
+.reserve-message {
+}
+.reserve-message div{
+    text-align:center;
+    margin-bottom: 0 !important;
+}
+.reserve-message h5 {
+
+}
+#reserv-qr-image{
+padding-bottom:10px;
+}
+
+
+
+/* -------------- PC -------------- */
+#shopping-cart-product-table {
+    /*overflow-x: scroll;*/ /* Mobilde tablo yana kaydırılsın (Şimdilik.)  */
+}
+
+#indexGrid {
+    width: 100%;
+    padding: 3px;
+    background-color: rgb(255, 255,255);
+    border: 1px solid #eee;
+}
+
+    #indexGrid tr {
+        width: 100%;
+        margin: 3px;
+        padding: 1px;
+    }
+
+        #indexGrid tr th {
+            text-align: center;
+            border-bottom: 2px solid rgb(240, 240,240);
+        }
+
+        #indexGrid tr td {
+            /*vertical-align:top;*/ /* Hücre içindeki yazıların yüksekliği.  */
+            margin: 3px;
+            padding: 10px 2px 10px 2px;
+            border-bottom: 1px solid #eee;
+        }
+
+            #indexGrid tr td.SC-list-count {
+                width: 4%;
+                text-align: right;
+                padding-right: 1%;
+                vertical-align: top;
+            }
+
+            #indexGrid tr td.SC-product-image {
+                width: 15%;
+                text-align: center;
+                padding: 2px 2px 2px 2px;
+            }        
+
+.SC-product-image img {
+    max-width: 200px;
+}
+#indexGrid tr td.SC-product-not-salablestock div {    
+    text-align: center;
+    margin: 10px 20px 10px 20px;
+}
+
+
+#indexGrid tr td.SC-product-name {
+    width: 35%;
+    font-size: 17px;
+    font-weight: 500;
+    vertical-align: top;
+    min-width: 150px;
+}
+
+#indexGrid tr td.SC-quantity {
+    width: 8%;
+    text-align: right;
+    padding-right: 2px;
+    vertical-align: top;
+}
+
+#indexGrid tr td.SC-unit-price {
+    width: 8%;
+    text-align: right;
+    padding-right: 2px;
+    vertical-align: top;
+}
+
+#indexGrid tr td.SC-total-price {
+    width: 8%;
+    text-align: right;
+    padding-right: 2px;
+    font-weight: 700;
+    vertical-align: top;
+}
+
+#indexGrid tr td.SC-product-remove {
+    width: 22%;
+    text-align: center;
+    vertical-align: top;
+}
+
+/* Tablonun altındaki toplam satırı...*/
+#indexGrid tr td.shopping-cart-total-price {
+    text-align: right;
+    padding-right: 2px;
+    font-weight: 900;
+    min-width: 75px; /* 454.75 € --> € sembolü aşağıya düşmesin diye 123.45 haneli sayılarda minimum 75 px olmalı. */
+}
+
+#indexGrid tr td.shopping-cart-total-text {
+    text-align: right;
+    padding-right: 2px;
+    font-weight: 900;
+}
+/* -------------- PC END -------------- */
+
+
+
+/* -------------- Mobil -------------- */
+
+#shopping-cart-product-table-mobil {
+   width:100%;
+}
+
+#indexGridMobil {
+    width: 100%;
+    padding: 3px;
+    background-color: rgb(255, 255,255);
+    border: 1px solid #eee;
+}
+
+    #indexGridMobil tr {
+        width: 100%;
+        margin: 3px;
+        padding: 1px;
+    }
+
+        #indexGridMobil tr th {
+            text-align: center;
+        }
+
+        #indexGridMobil tr td {
+            /*vertical-align:top;*/ /* Hücre içindeki yazıların yüksekliği.  */
+            margin: 3px;
+            padding: 2px 4px 2px 2px;
+        }
+
+
+
+            #indexGridMobil tr td.SC-product-image-mobil {
+                width: 25%;
+                text-align: center;
+                padding: 2px 2px 2px 2px;
+            }
+
+                #indexGridMobil tr td.SC-product-image-mobil img {
+                    max-width: 80px;
+                }
+
+
+            #indexGridMobil tr td.SC-product-not-salablestock  {
+                border-bottom: 2px solid rgb(240, 240,240);
+            }
+
+            #indexGridMobil tr td.SC-product-not-salablestock div {
+                text-align: center;
+                margin: 5px 20px 5px 20px;
+            }
+
+#indexGridMobil tr td.SC-product-name-mobil {
+    width: 75%;
+    font-size: 17px;
+    font-weight: 500;
+    vertical-align: top;
+}
+
+#indexGridMobil tr td.SC-quantity-mobil {
+    width: 8%;
+    text-align: right;
+    padding-right: 2px;
+    vertical-align: top;
+}
+
+#indexGridMobil tr td.SC-unit-price-mobil {
+    width: 8%;
+    text-align: right;
+    padding-right: 2px;
+    vertical-align: top;
+}
+
+            #indexGridMobil tr td.SC-total-price-mobil {
+                width: 8%;
+                text-align: right;
+                padding-right: 2px;
+                font-weight: 700;
+                vertical-align: top;
+                border-bottom: 2px solid rgb(240, 240,240);
+            }
+
+#indexGridMobil tr td.SC-product-remove-mobil {
+    width: 22%;
+    text-align: center;
+    vertical-align: top;
+}
+
+/* Tablonun altındaki toplam satırı...*/
+#indexGridMobil tr td.shopping-cart-total-price-mobil {
+    text-align: right;
+    padding-right: 2px;
+    font-weight: 900;
+    min-width: 75px; /* 454.75 € --> € sembolü aşağıya düşmesin diye 123.45 haneli sayılarda minimum 75 px olmalı. */
+}
+
+#indexGridMobil tr td.shopping-cart-total-text-mobil {
+    text-align: right;
+    padding-right: 2px;
+    font-weight: 900;
+}
+/* -------------- Mobil END -------------- */

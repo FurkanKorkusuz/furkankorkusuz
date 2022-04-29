@@ -1,0 +1,13 @@
+﻿$color-dark: #222;
+$color-body: #ccc;
+$color-background: white;
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.bottom {
+    justify-self: bottom;
+}

@@ -1,0 +1,28 @@
+﻿#product-detail {
+    /*    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;*/
+    /*padding: 3px 1px 3px 1px;*/
+    padding: 3px;
+}
+div#ProductImages{
+    border-bottom:1px solid #eee;
+}
+div#ProductImages {
+    border-bottom: 1px solid #eee;
+}
+div#ProductPriceAndAddToCart {
+    border-bottom: 1px solid #eee;
+    padding-bottom:3px;
+}
+
+div.product-price {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    padding: 3px 3px 0 3px;
+}
+div.add-to-cart {
+    text-align: center;
+}

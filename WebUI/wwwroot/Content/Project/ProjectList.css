@@ -1,0 +1,9 @@
+﻿#body-container {
+    margin: 1px;
+}
+
+.project-cart {
+    margin: 1px;
+    padding: 3px;
+    border-bottom: 1px solid #ddd;
+}

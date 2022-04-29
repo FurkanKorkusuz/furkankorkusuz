@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Web.UI.MVC.Jquery</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <nav id="baseNav" class="navbar navbar-expand-md navbar-left" style="background-color: #005555;border-bottom: 2px solid #fff;">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: 5px solid #fff;">
+            <span style="color: #fff;"><i class="fas fa-bars"></i></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            @Html.Raw(MVC.Web.UI.Controllers.BasePage.BasePageMenu())
+        </div>
+    </nav>
+
+
+
+    <!-- ======= Ajax Loading Image======= -->
+    <div id="AjaxLoadingImage" style="display: none;" class="backdrop">
+        <i class="fa fa-cog fa-spin"></i>
+    </div>
+
+    <!-- ======= Scroll Top Button ======= -->
+    <i onclick="BasePage.GoScrollTop()" id="scrollTopButton" title="Sayfa başına dön" class="fas fa-chevron-circle-up"></i>
+
+
+
+    <main role="main">
+        <div class="row">
+            <div id="sideBar" class="col-xl-2 col-md-2 col-lg-2 col-sm-12" style=" border-bottom: 3px solid #fff;text-align:center;background-color:#fcfcfc;">
+                <div style="padding:10px;">
+                    <img src="~/Uploads/Images/fk.com/developer.jpg" style="max-width:100%;border-radius:50%;" />
+                </div>
+                <h3 style="color:#777;">Furkan KORKUSUZ</h3>
+                <i>
+                    Mekatronic Engineer <br>
+                    Software Developer<br><br>
+                    <b>&#8221;Öğrenmenin sonsuzluğunu keşfettim...&#8221;</b>
+                </i>
+            </div>
+
+            <div id="renderBody" class="render-body col-xl-7 col-md-7 col-lg-7 col-sm-12">
+                @RenderBody()
+            </div>
+        </div>
+
+
+    </main>
+  
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="navbar-inverse" style="background-color: #005555;">
+        <div class="footer-top">
+            <div class="">
+                <div class="row">
+
+                    @*<div class="col-lg-3 col-md-6">
+                            <div class="footer-info">
+                                <h3>İletişim</h3>
+                                <p>
+                                    BURÇİSTANBUL Kat:16
+                                    <br>
+                                    Esenyurt / İSTANBUL<br>
+                                    <br>
+                                    <strong>Telefon:</strong> +90 554 817 39 48<br>
+                                    <strong>Email:</strong> furkankorkusuz2@gmail.com<br>
+                                </p>
+                                <div class="social-links mt-3">
+                                    <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                                    <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                                    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                                    <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                                    <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>*@
+
+                    @*<div class="col-lg-2 col-md-6 footer-links">
+                            <h4>Sayfalar</h4>
+                            <ul>
+                                <li><i class="bx bx-chevron-right"></i><a href="#">Anasayfa</a></li>
+                                <li><i class="bx bx-chevron-right"></i><a href="#">Hakkımda</a></li>
+                                <li><i class="bx bx-chevron-right"></i><a href="#">Bloglar</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-links">
+                            <h4>Kategoriler</h4>
+                            <ul>
+                            </ul>
+                        </div>*@
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="copyright col-12 text-center">
+                &copy; Copyright Designed by FURKAN KORKUSUZ
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

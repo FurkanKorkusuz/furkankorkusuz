@@ -1,0 +1,108 @@
+﻿
+@{
+    Layout = "~/Views/Shared/BasePage.cshtml";
+}
+
+<div class="render-container">
+    <div id="logon-form" style="padding-top:.2em;" class="row">
+
+        <div class="col-12 col-xl-3 col-lg-3"></div>
+        <div class="col-12 col-xl-6 col-lg-6" style="background-color:#f7f7f7;padding:.5em;border-radius:3px;box-shadow:.1px .1px 7px .5px #aaa ">
+            <div style="text-align:center;font-size:1.7em;border-bottom:1px solid #ccc;margin-bottom:.5em;">Giriş yap</div>
+            <div class="form-group">
+                <label for="logonEmail"><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" class="form-control" id="logonEmail" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="logonPassword"><i class="fas fa-lock"></i> Şifre</label>
+                <input type="password" class="form-control" id="logonPassword" placeholder="Password">
+            </div>
+            <div class="form-group form-check">
+                <input style="height:17px;width:17px;" type="checkbox" class="form-check-input" id="logonRememberMe">
+                <label class="form-check-label" for="logonRememberMe"> <i class="fas fa-child"></i> Beni hatırla</label>
+            </div>
+            <div class="form-group">
+                <a onclick="List.ForgotPassword()" href="#"><i class="far fa-frown-open"></i> Şifremi unuttum</a>
+            </div>
+            <div id="logonError" style="display:none;" class="alert alert-danger"></div>
+            <button onclick="List.Logon()" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Giriş</button>
+            <div style="border-top:1px solid #ccc;margin-top:1em;">Ya da Yeni Üyelik Oluştur </div>
+            <button onclick="List.OpenCreateForm()" class="btn btn-success btn-block"><i class="fas fa-user-plus"></i> Üye ol</button>
+        </div>
+        <div class="col-12 col-xl-3 col-lg-3"></div>
+    </div>
+
+    <div id="forgot-password-form" style="padding-top:.2em;display:none;" class="row">
+
+        <div class="col-12 col-xl-3 col-lg-3"></div>
+        <div class="col-12 col-xl-6 col-lg-6" style="background-color:#f7f7f7;padding:.5em;border-radius:3px;box-shadow:.1px .1px 7px .5px #aaa ">
+            <div style="text-align:center;font-size:1.7em;border-bottom:1px solid #ccc;margin-bottom:.5em;">Yeni şifre Email hesabınıza gönderilecektir.</div>
+            <div class="form-group">
+                <label for="forgotEmail"><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" class="form-control" id="forgotEmail" placeholder="Email">
+            </div>
+
+
+            <div id="forgotError" style="display:none;" class="alert alert-danger"></div>
+            <div class="form-group">
+            
+                <button id="send-forgot-password" onclick="List.SendForgotPasswordLink()" class="btn btn-primary btn-block"><i class="fas fa-envelope"></i> Gönder</button>
+            </div>
+                <div class="form-group">
+                    <a onclick="List.OpenLogonForm()" href="#"><i class="fas fa-chevron-left"></i> Geri Dön</a>
+                </div>
+            </div>
+        <div class="col-12 col-xl-3 col-lg-3"></div>
+        </div>
+
+    <div id="create-form" style="padding-top:.2em;padding-bottom:.2em;display:none;" class="row">
+
+        <div class="col-12 col-xl-3 col-lg-3"></div>
+        <div class="col-12 col-xl-6 col-lg-6" style="background-color:#f7f7f7;padding:.5em;border-radius:3px;box-shadow:.1px .1px 7px .5px #aaa ">
+            <div style="text-align:center;font-size:1.7em;border-bottom:1px solid #ccc;margin-bottom:.5em;">Yeni Hesap Oluşturun</div>
+            <div class="form-group">
+                <label for="createFirstName"><i class="fas fa-id-card"></i>  Adı</label>
+                <input type="text" class="form-control" id="createFirstName" placeholder="Adınız">
+            </div>
+             <div class="form-group">
+                <label for="createLastName"><i class="fas fa-id-card"></i> Soyadı</label>
+                <input type="text" class="form-control" id="createLastName" placeholder="Soyadınız">
+            </div>
+            <div class="form-group">
+                <label for="createEmail"><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" class="form-control" id="createEmail" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="createPassword"><i class="fas fa-lock"></i> Şifre</label>
+                <input type="password" class="form-control" id="createPassword" placeholder="Şifre">
+            </div>
+            <div class="form-group">
+                <label for="createPasswordConfirm"><i class="fas fa-sync-alt"></i> Şifre Tekrar</label>
+                <input type="password" class="form-control" id="createPasswordConfirm" placeholder="Şifre Tekrar">
+            </div>
+            <div class="form-group form-check">
+                <input style="height:17px;width:17px;" type="checkbox" class="form-check-input" id="createMembershipAgreement">
+                <label class="form-check-label" for="createMembershipAgreement">Üyelik <a  href="https://furkankorkusuz.com/Home/MembershipAgreement">sözleşmesi</a>ni okudum onaylıyorum</label>
+            </div>
+
+            <div id="createError" class="alert alert-danger" style="display:none;"></div>
+            <button onclick="List.CreateAccount()" class="btn btn-success btn-block"><i class="fas fa-user-plus"></i> Üye ol</button>
+            <div style="border-top:1px solid #ccc;margin-top:1em;">Zaten hesabınız var mı? </div>
+            <button onclick="List.OpenLogonForm()" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Giriş Yapın</button>
+        </div>
+        <div class="col-12 col-xl-3 col-lg-3"></div>
+    </div>
+
+    <div id="create-confirm-form" style="padding-top:.2em;padding-bottom:.2em;display:none" class="row">
+
+        <div class="col-12 col-xl-3 col-lg-3"></div>
+        <div class="col-12 col-xl-6 col-lg-6" style="background-color:#f7f7f7;padding:.5em;border-radius:3px;box-shadow:.1px .1px 7px .5px #aaa ">
+            <div class="alert alert-success" style="text-align:center;font-size:1.3em;border-bottom:1px solid #ccc;margin-bottom:.5em;"><i class="far fa-check-circle fa-2x"></i><br>Hesabınız oluşturuldu. <hr />1-2 dakika içerisinde Email adresinize gönderilecek olan doğrulama linkine tıklayarak hesabınızı aktif hale getirebilirsiniz...</div>
+        </div>
+        <div class="col-12 col-xl-3 col-lg-3"></div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/Scripts/User/Login.js?@Core.UI.WebUI.Version.JS"></script>
+}

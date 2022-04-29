@@ -1,0 +1,10 @@
+﻿#body-container {
+    margin: 1px;
+}
+
+.blog-cart {    
+    margin: 1px;
+    padding: 3px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom:13px;
+}

@@ -1,0 +1,689 @@
+﻿
+/*EKRAN genişliği 350px altına inerse Navbar daki Alkapida OUTLET yazısı çık yer kapladığı için gizlensin, Onun yerine HOME iconu olan link çıksın. */
+/*@media (max-width: 350px) {
+    #baseNav a.navbar-brand{
+        display:none;
+    }
+
+}
+@media (min-width: 350px) {
+      #baseNav a.navbar-brand-icon {
+        display: none;
+    }
+}*/
+
+
+body {
+    /*padding-top: 7rem;*/ /* navbar*/
+    margin: 0px;
+    overflow-x: hidden;
+}
+    body main {
+        /*min-height: 60vh;*/
+    }
+        body main div.render-body {
+            min-height: 87vh
+        }
+    body .navbar-brand img {
+        height: 24px;
+    }
+    body main div#renderBody {
+        padding: 0;
+    }
+@media (max-width: 767.98px) {
+
+    #sideBar{display:none;}
+}
+
+#scrollTopButton {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-size: 27px;
+    border: 5px solid #fff;
+    color: #005555;
+    background-color: #fff;
+    border-radius: 50px;
+}
+
+footer {
+    background-color: #343A40;
+    color: rgb(255,255,255);
+    padding: 10px;
+    width: 100vw;
+}
+/*.backdrop {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.3;
+}*/
+#AjaxLoadingImage {
+    /*display: none;*/
+    z-index: 999999999;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.3;
+    text-align: center;
+    color: #fff;
+    padding: 20px 0;
+    font-style: italic;
+    font-size: 3em
+}
+
+    #AjaxLoadingImage > .fa-spin {
+        background-color: #000;
+        margin-top: 10%;
+    }
+
+.fa-spin::before {
+    font-weight: bold;
+    font-size: 10vw;
+}
+
+.row {
+     margin-right: 0 !important; 
+     margin-left: 0 !important; 
+
+}
+
+
+div.main-container {
+    background-color: rgb(240, 240,240);
+}
+
+div.main-padding-container {
+    width: 95%;
+    margin: auto;
+    padding: 5px;
+}
+
+div.page-title {
+    background-color: rgb(255, 255,255);
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 5px;
+    border-bottom: 1px solid rgb(240, 240,240);
+}
+
+div.page-footer {
+    background-color: rgb(255, 255,255);
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 5px;
+    border-top: 1px solid rgb(240, 240,240);
+}
+
+.btn-circle{
+    border-radius:100% !important;
+}
+
+#ContainerTable{
+    padding:5px;
+    
+}
+
+.base-table {
+    width:100%;
+    border: 1px solid #ccc;
+    background-color:rgb( 240, 250, 250, 0.1)
+}
+    .base-table thead {
+    }
+        .base-table thead th {
+            border-bottom: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+        }
+    .base-table tbady {
+    }
+        .base-table tbody td {
+            border-bottom: 1px solid #eee;
+            border-right: 1px solid #eee;
+            padding:2px 5px 2px 5px;
+        }
+    .base-table tbody tr:nth-child(odd) {
+        background-color: rgb( 229, 245, 245, 1)
+    }
+    .base-table tbody tr:hover {
+        background-color: rgb( 114, 228, 228, 1)
+    }
+
+.filter-base-table {
+    border: 1px solid #eee;
+    border-radius: 3px;
+    padding: 3px;
+    background-color: rgb( 245, 245, 245, 1)
+}
+@media (max-width: 767.98px) {
+    body .navbar-nav {
+        overflow-y: auto;
+    }
+    .navbar-nav .btn {
+        margin-top:.5rem;        
+    }
+    .base-table tbody tr td.base-table-mobile-hide, thead tr th.base-table-mobile-hide {
+       display:none;
+    }
+ 
+}
+.navbar-nav .btn {
+    margin-right: .5rem;
+}
+
+
+#CookieAccept {
+    display: block; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    z-index: 99; /* Make sure it does not overlap */
+    border: .5px solid rgb(230,230,230); /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: rgb(250,250,250); /* Set a background color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 10px; /* Increase font size */
+    margin: 10px 5% 20px 5%
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.table-card .card-body {
+    position: relative;
+}
+
+    .table-card .card-body .backdrop {
+        display: none;
+        z-index: 1000;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #000;
+        opacity: 0.3;
+        text-align: center;
+        color: #fff;
+        padding: 20px 0;
+        font-style: italic;
+        font-size: 3em;
+    }
+
+.table-card .button-row {
+    padding-bottom: 15px;
+    text-align: right;
+}
+
+    .table-card .button-row:empty {
+        display: none;
+    }
+
+    .table-card .button-row button {
+        margin-left: 5px;
+    }
+
+
+/*.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+
+}
+
+.modal-backdrop .fade {
+    opacity: .7;
+}
+.modal-backdrop .show {
+    opacity: .5;
+}*/
+
+.table-card .table-wrapper {
+    margin: 0 -20px;
+    margin-top: 5px;
+}
+
+    .table-card .table-wrapper th, .table-card .table-wrapper td {
+        text-align: center;
+    }
+
+    .table-card .table-wrapper .active-sort-header-asc, .table-card .table-wrapper .active-sort-header-desc, .table-card .table-wrapper .sorted-column {
+        background-color: #f7f7f7;
+    }
+
+.table-card td, .table-card th {
+    padding: .15rem;
+    vertical-align: baseline;
+    font-size: 0.8rem;
+}
+
+.table-card button {
+    padding: .15rem;
+    padding-left: .60rem;
+    padding-right: .60rem;
+    vertical-align: baseline;
+    font-size: 0.8rem;
+}
+
+.table thead th {
+    border: 1px solid #dee2e6;
+}
+
+.table tbody td {
+    border: 1px solid #dee2e6;
+}
+
+.table-card .table-wrapper tr:hover td {
+    background-color: #DEFFFF !important;
+}
+
+.filter-wrapper .FilterClear {
+    font-size: 0.8rem;
+    margin: 0.3px;
+    margin-bottom: 1px;
+}
+
+.filter-wrapper div.form-group, .filter-wrapper label {
+    font-size: 0.8rem;
+    margin: 0.3px;
+    margin-bottom: 1px;
+}
+
+.filter-wrapper input, .filter-wrapper select, .filter-wrapper select option, .input-group-addon {
+    height: 25px;
+    font-size: 0.8rem;
+    vertical-align: baseline;
+    padding: .15rem !important;
+}
+
+div.card-body {
+    padding-top: 5px;
+}
+
+div.card {
+    margin-top: 5px;
+}
+
+/*  ------------------------------------------------------ START css Msg object */
+#MessageDiv {
+    outline: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    z-index: 999999;
+    display: none;
+    color: #000;
+    font-size: 11px;
+}
+
+    #MessageDiv > .backdrop {
+        display: none;
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #000;
+        opacity: 0.3;
+    }
+
+    #MessageDiv.dialog-mode {
+        height: 100%;
+    }
+
+        #MessageDiv.dialog-mode > .backdrop {
+            display: block;
+        }
+
+    #MessageDiv .msg-icon {
+        position: absolute;
+        top: 7px;
+        left: 10px;
+        font-size: 13px;
+    }
+
+    #MessageDiv .msg-icon-ok:before {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f164";
+    }
+
+    #MessageDiv .msg-icon-warning:before {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f06a";
+    }
+
+    #MessageDiv .msg-icon-error:before {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f071";
+    }
+
+    #MessageDiv .msg-row {
+        z-index: 2;
+        padding: 10px 40px 10px 30px;
+        min-height: 42px;
+        position: relative;
+        border-bottom: 1px solid #000;
+    }
+
+        #MessageDiv .msg-row .btn-close {
+            position: absolute;
+            right: 6px;
+            top: 6px;
+            width: 30px;
+        }
+
+        #MessageDiv .msg-row.msg-ok .btn-close {
+            color: #6cc76c;
+            border-color: #6cc76c;
+        }
+
+        #MessageDiv .msg-row.msg-warning .btn-close {
+            color: #faa11c;
+            border-color: #faa11c;
+        }
+
+        #MessageDiv .msg-row.msg-error .btn-close {
+            color: #FF3300;
+            border-color: #FF3300;
+        }
+
+    #MessageDiv .msg-ok {
+        background-color: #CCFFCC;
+    }
+
+    #MessageDiv .msg-warning {
+        background-color: #FFDDAA;
+    }
+
+    #MessageDiv .msg-error {
+        background-color: #FF3300;
+        color: #FFF;
+    }
+
+
+.fa-font-family {
+    font-family: 'Font Awesome 5 Free', -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+    .fa-font-family .form-control.fw-ph-900::placeholder {
+        font-weight: 900;
+    }
+
+.placeholder-r::placeholder {
+    text-align: right;
+}
+
+.card-header[data-toggle="collapse"]:after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f078";
+    font-weight: 900;
+    float: right;
+    line-height: 1.5;
+    transition: .2s transform ease-in-out;
+}
+
+.card-header[data-toggle="collapse"].collapsed:after {
+    transform: rotate(90deg);
+}
+
+input.price, input.weight, input.dimension, input.percentage, input.decimal, input.integer, input.int, input.money, input.number {
+    text-align: right;
+    width: 100px;
+}
+
+.card-header .btn-xs {
+    margin-top: -2px;
+    margin-bottom: -3px;
+}
+
+.card-header .btn-sm {
+    margin-bottom: -6px;
+    margin-top: -6px;
+}
+
+.btn-xs {
+    padding: 0.18rem 0.38rem;
+    font-size: 0.875rem;
+    line-height: 1;
+    border-radius: 0.2rem;
+}
+
+.base-table th {
+    vertical-align: middle !important;
+    white-space: nowrap;
+}
+
+.base-table i.sort-link {
+    cursor: pointer;
+}
+
+.base-table .toggle-sort-link {
+    cursor: pointer;
+}
+
+.base-table .sort-link-asc, .base-table .sort-link-desc {
+    margin: 0 3px;
+}
+
+.base-table .active-sort-header-desc .sort-link-desc {
+    color: red;
+}
+
+.base-table .active-sort-header-asc .sort-link-asc {
+    color: red;
+}
+
+.form-group.has-error .form-control {
+    border-color: #a94442;
+}
+
+.form-group em.help-block.error {
+    color: #a94442;
+}
+
+.form-group label.required:before {
+    content: "* ";
+    color: red;
+}
+
+.entity-form .form-group {
+    width: 100%;
+    padding: 2px 2px 2px 2px;
+    font-weight: 600;
+    line-height: 1px;
+    color: black;
+    margin: 0px;
+}
+
+    .entity-form .form-group label {
+        width: 100%;
+        height: 12px;
+        padding: 2px 2px 0 2px;
+        color: black;
+    }
+
+.entity-form .form-control {
+    width: 100%;
+    height: 22px;
+    padding: 2px 2px 0 2px;
+    line-height: 1px;
+    color: black;
+    margin-right: 0px;
+    max-width: 100%;
+}
+
+.modal-body .form-group {
+    width: 100%;
+    padding: 2px 2px 0 2px;
+    font-weight: 600;
+    line-height: 1px;
+    color: black;
+    margin: 0px;
+}
+
+    .modal-body .form-group label {
+        width: 100%;
+        padding: 2px 2px 0 2px;
+        color: black;
+    }
+
+.modal-body .form-control {
+    width: 100%;
+    padding: 2px 2px 0 2px;
+    /*   line-height: 1px;*/
+    color: black;
+    margin-right: -1px;
+    max-width: 100%;
+}
+
+/*    .modal-body .form-control .textarea {
+        width: 80%;
+        height: 228px;
+        padding: 2px 2px 0 2px;
+        line-height: 1px;
+        color: red;
+        margin-right: -1px;
+        max-width: 80%;
+    }*/
+
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
+
+.width-20 {
+    width: 20px !important;
+}
+
+.width-30 {
+    width: 30px !important;
+}
+
+.width-40 {
+    width: 40px !important;
+}
+
+.width-50 {
+    width: 50px !important;
+}
+
+.width-60 {
+    width: 60px !important;
+}
+
+.width-70 {
+    width: 70px !important;
+}
+
+.width-80 {
+    width: 80px !important;
+}
+
+.width-90 {
+    width: 90px !important;
+}
+
+.width-100 {
+    width: 100px !important;
+}
+
+.width-110 {
+    width: 110px !important;
+}
+
+.width-120 {
+    width: 120px !important;
+}
+
+.width-150 {
+    width: 150px !important;
+}
+
+.width-200 {
+    width: 200px !important;
+}
+
+.width-500 {
+    width: 500px !important;
+}
+
+.width-250 {
+    width: 250px !important;
+}
+
+.width-300 {
+    width: 300px !important;
+}
+
+.width-350 {
+    width: 350px !important;
+}
+
+.width-400 {
+    width: 400px !important;
+}
+
+.width-600 {
+    width: 600px !important;
+}
+
+.width-750 {
+    width: 745px !important;
+}
+
+.modal.scrollable-y .modal-body {
+    overflow-y: auto;
+}
+
+.modal-w .card-body {
+    overflow-x: auto;
+}
+
+.modal-w-75 .modal-dialog {
+    max-width: 100%;
+    width: 75%;
+}
