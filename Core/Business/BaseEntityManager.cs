@@ -1,4 +1,5 @@
-﻿using Core.DataAccess;
+﻿using Core.Aspects.Autofac.Authorization;
+using Core.DataAccess;
 using Core.DataAccess.Abstract;
 using Core.DataAccess.Dapper;
 using Core.Entities;
@@ -14,15 +15,21 @@ namespace Core.Utilities.Business
 {
     public class BaseEntityManager<TEntity> : IEntityService<TEntity>
         where TEntity : class, IEntity, new()
-        //where IDal : IEntityRepository<TEntity>
-
     {
-
         IEntityRepository<TEntity> _dal;
-
+        Type _type;
+        private class PermissionByMethod
+        {
+            public string GetList { get; set; }
+            public string Add { get; set; }
+            public string Update { get; set; }
+            public string Delete { get; set; }
+            public string GetByPattern { get; set; }
+        }
         public BaseEntityManager(IEntityRepository<TEntity> dal)
         {
             _dal = dal;
+            _type = typeof(TEntity);
         }
 
         public virtual IDataResult<List<TEntity>> GetList(int rowNumber, Dictionary<string, string> filter, int rowPerPage = 20)
@@ -36,7 +43,7 @@ namespace Core.Utilities.Business
                 return new ErrorDataResult<List<TEntity>>(ex.Message);
             }
         }
-
+        [BaseSecuredOperation()]
         public virtual IDataResult<List<TEntity>> GetList(QueryParameter queryParameter)
         {
             try
@@ -47,13 +54,6 @@ namespace Core.Utilities.Business
             {
                 return new ErrorDataResult<List<TEntity>>(ex.Message);
             }
-        }
-
-
-        public virtual IDataResult<List<TEntity>> GetAll(QueryParameter queryParameter)
-        {
-            queryParameter.GetAll = true;
-           return  GetList(queryParameter);
         }
 
         public virtual IDataResult<TEntity> Add(TEntity entity)
@@ -82,7 +82,7 @@ namespace Core.Utilities.Business
             }
         }
 
-        public virtual IDataResult<TEntity> GetByPattern(object pattern, string tableName=null)
+        public virtual IDataResult<TEntity> GetByPattern(object pattern, string tableName = null)
         {
             try
             {
@@ -108,6 +108,7 @@ namespace Core.Utilities.Business
         }
 
 
-    
+
+
     }
 }

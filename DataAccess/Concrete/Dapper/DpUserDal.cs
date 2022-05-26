@@ -17,7 +17,7 @@ namespace DataAccess.Concrete.Dapper
         public List<OperationClaim> GetClaimsByUserID(int userid)
         {
 
-            List<OperationClaim> list = null;
+            List<OperationClaim> list = new List<OperationClaim>();
             string strSql = @"select *
                             from OperationClaims oc
                             join UserOperationClaims uoc on uoc.OperationClaimID = oc.ID

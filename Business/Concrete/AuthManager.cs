@@ -10,6 +10,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Core.Utilities.IoC;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Business.Concrete
 {
@@ -17,28 +20,32 @@ namespace Business.Concrete
     {
         private IUserService _userService;
         private ITokenHelper _tokenHelper;
+        IHttpContextAccessor _httpContextAccessor;
         public AuthManager(IUserService userService, ITokenHelper tokenHelper)
         {
             _userService = userService;
-            _tokenHelper = tokenHelper;
+            _tokenHelper = tokenHelper; 
+            _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
         }
         public IDataResult<AccessToken> CreateAccessToken(User user)
         {
             var claims = _userService.GetClaimsByUserID(user.ID);
             var accessToken = _tokenHelper.CreateToken(user, claims.Data);
+            HttpContext  ("tkn", );
             return new SuccessDataResult<AccessToken>(accessToken);
-
-
         }
 
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
             // Kullanıcı var mı
-           var usertoCheck=_userService.GetByPattern(userForLoginDto.Email);
+           var usertoCheck=_userService.GetByPattern(new {Email= userForLoginDto.Email });
             if (!usertoCheck.Success)
             {
                 return new ErrorDataResult<User>(AuthenticationMessage.UserNotFound);
             }
+
+            //byte[] passwordHash, passwordSalt;
+            //HashingHelper.CreatePasswordHash(userForLoginDto.Password, out passwordHash, out passwordSalt);
 
             // Şifre eşleşiyor mu
             if (! HashingHelper.VerifyPasswordHash(userForLoginDto.Password, usertoCheck.Data.PasswordHash, usertoCheck.Data.PasswordSalt))

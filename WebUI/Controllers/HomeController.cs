@@ -14,22 +14,24 @@ namespace Web.UI.MVC.Jquery.Controllers
 {
     public class HomeController : Controller
     {
-        IUserService _userService;
+        IBrandService _service;
 
-        public HomeController(IUserService userService)
+        public HomeController(IBrandService service)
         {
-            _userService = userService;
+            _service = service;
         }
 
         public IActionResult Index()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //    QueryParameter parameter3 = new QueryParameter();
-            string email = "furkankorkusuz2@gmail.com";
-            User user = new User();
-            user.Email = email;
-            user.FirstName = "Furkan";
-            _userService.GetByPattern(new { user.Email, user.FirstName });
+            _service.GetList(new QueryParameter());
+            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ////    QueryParameter parameter3 = new QueryParameter();
+            //string email = "furkankorkusuz2@gmail.com";
+            //User user = new User();
+            //user.Email = email;
+            //user.FirstName = "Furkan";
+            //_userService.GetByPattern(new { user.Email, user.FirstName });
+
 
             return View();
         }

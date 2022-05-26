@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
     List.Init();
+    $('#logonEmail').val("furkankorkusuz2@gmail.com");
+    $('#logonPassword').val("Faslan.1");
 });
 
 var List = {
@@ -7,12 +9,12 @@ var List = {
         $('#logonPassword').on("keyup", function (event) {
             if (event.keyCode === 13) {
                 event.preventDefault();
-                List.Logon();
+                List.Login();
             }
         });
     },
 
-    Logon: function () {
+    Login: function () {
 
         // email validation regex
         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -42,7 +44,7 @@ var List = {
         }
 
         Backend.Post(
-            'LogonEnter',
+            'Logon',
             prt,
             function (response) {
 
@@ -55,7 +57,8 @@ var List = {
                 }
                 //window.location.href = "/User/Detail";
                 window.location.href = document.referrer ? document.referrer : "~/";
-            }
+            },
+           
         )
     },
 

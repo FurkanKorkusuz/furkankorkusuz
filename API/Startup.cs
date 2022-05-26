@@ -1,4 +1,3 @@
-
 using Core.DependencyResolvers;
 using Core.Extensions;
 using Core.Utilities.IoC;
@@ -7,18 +6,20 @@ using Core.Utilities.Security.Encryption;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Web.UI.MVC.Jquery
+namespace API
 {
     public class Startup
     {
@@ -32,18 +33,18 @@ namespace Web.UI.MVC.Jquery
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+
+            services.AddControllers();
 
             // Eklemem gereken servisleri bu þekilde ekleyebilirim ancak kendi servis Tool umu yazarak burayý deðiþtirmeden Core katmanýnda müdahele edebilirim. Ýleride yani proje oluþturursam servislerim core dan ekli gelir.
             // services.AddMemoryCache();
-                   
 
             // Yukarýdaki eklemeyi yapmak yerine Core dan eklediðim servisleri burada çalýþtýrmak için
             services.AddDependencyResolvers(new ICoreModule[]
             {
                 new CoreModule(),
             });
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 
 
             // Cors webApý ye eriþimlerin vc kontrol edildði bir yer.
@@ -76,13 +77,11 @@ namespace Web.UI.MVC.Jquery
                 };
             });
 
-
-            // JSON stringlerimde nesnelerimin adýný camelCase yapýyordu ancak ben default olarak yazýldýðý gibi gelmesini istedim. 
-            services.AddMvc().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
-
-
-            // Sonradan eklendi. 
-            services.AddSession();
+            // Swagger çalýþtýrmak için.
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -91,24 +90,20 @@ namespace Web.UI.MVC.Jquery
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             }
 
+            //Exception için yazdýðýmýz middleware
+            app.ConfigureCustomExceptionMiddleware();
 
             // Yukarýda Cors ekledik burada çaðýrmamýz lazým (burada sýra önemli.)
             // Buradaki builder http://localhost:3000 sitesinden gelen her türlü (get,post,put,delete) istege cevap ver demektir. 
             app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
             app.UseRouting();
-
 
             // Sonradan eklendi. 
             app.UseAuthentication(); // API ye kimler eriþebilir.
@@ -116,14 +111,10 @@ namespace Web.UI.MVC.Jquery
             app.UseAuthorization(); // Apý deki hangi mmetodlara kimler  eriþebilir
 
 
-            // Sonradan eklendi. 
-            app.UseSession(); //  Endpoints(sayfa yönlendirme) den önce olmasý gerek 
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllers();
             });
         }
     }

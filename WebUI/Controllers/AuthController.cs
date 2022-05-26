@@ -25,8 +25,8 @@ namespace WebUI.Controllers
             if (!userToLogin.Success)
             {
                 return Json(new ErrorResult());
-            };
-            _authService.CreateAccessToken(userToLogin.Data);
+            }
+           var token= _authService.CreateAccessToken(userToLogin.Data).Data;
             return Json(new SuccessResult());
         }
 
@@ -37,10 +37,10 @@ namespace WebUI.Controllers
             if (!userExists.Success)
             {
                 return Json(new ErrorResult(userExists.ErrorMessage));
-            };
+            }
             var registerResult = _authService.Register(entity, entity.Password);
             //_authService.CreateAccessToken(registerResult.Data);
-           return Json("Success:","true");
+           return Json(registerResult);
  
 
         }

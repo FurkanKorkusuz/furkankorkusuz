@@ -32,10 +32,5 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public IResult TransactionTest(Brand brand)
-        {
-            
-            return new SuccessResult();
-        }
     }
 }

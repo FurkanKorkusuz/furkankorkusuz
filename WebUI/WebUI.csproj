@@ -9,7 +9,6 @@
     <None Include="wwwroot\Content\BasePage\bootstrap-theme.min.css.map" />
     <None Include="wwwroot\Content\BasePage\bootstrap.css.map" />
     <None Include="wwwroot\Content\BasePage\bootstrap.min.css.map" />
-    <None Include="wwwroot\Content\BasePage\FK.scss" />
     <None Include="wwwroot\Content\bootstrap-4.3.1\css\bootstrap-grid.css.map" />
     <None Include="wwwroot\Content\bootstrap-4.3.1\css\bootstrap-grid.min.css.map" />
     <None Include="wwwroot\Content\bootstrap-4.3.1\css\bootstrap-reboot.css.map" />
