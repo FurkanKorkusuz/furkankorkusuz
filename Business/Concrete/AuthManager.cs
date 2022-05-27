@@ -28,13 +28,12 @@ namespace Business.Concrete
             var accessToken = _tokenHelper.CreateToken(user, claims.Data);
             return new SuccessDataResult<AccessToken>(accessToken);
 
-
         }
 
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
             // Kullanıcı var mı
-           var usertoCheck=_userService.GetByPattern(userForLoginDto.Email);
+           var usertoCheck=_userService.GetByPattern(new {Email= userForLoginDto.Email });
             if (!usertoCheck.Success)
             {
                 return new ErrorDataResult<User>(AuthenticationMessage.UserNotFound);

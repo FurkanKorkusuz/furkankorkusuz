@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Scripts\Auth\Login.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\Content\BasePage\bootstrap-theme.css.map" />
     <None Include="wwwroot\Content\BasePage\bootstrap-theme.min.css.map" />
     <None Include="wwwroot\Content\BasePage\bootstrap.css.map" />
@@ -137,6 +141,7 @@
     <None Include="wwwroot\lib\jquery\dist\jquery.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\Scripts\Auth\Login.js" />
     <None Include="wwwroot\Scripts\BasePage\BackendHelper.js" />
     <None Include="wwwroot\Scripts\BasePage\BaseList.js" />
     <None Include="wwwroot\Scripts\BasePage\BasePage.js" />

@@ -1,7 +1,11 @@
 ﻿using Business.Abstract;
 using Core.Entities.DTOs;
+using Core.Utilities.IoC;
 using Core.Utilities.Results;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
+using System.Security.Claims;
 
 namespace WebUI.Controllers
 {
@@ -19,14 +23,18 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Logon(UserForLoginDto userForLoginDto)
+        public IActionResult Login(UserForLoginDto userForLoginDto)
         {
             var userToLogin = _authService.Login(userForLoginDto);
             if (!userToLogin.Success)
             {
                 return Json(new ErrorResult());
-            };
+            }
             _authService.CreateAccessToken(userToLogin.Data);
+            IHttpContextAccessor _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
+            var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var id = _httpContextAccessor.HttpContext.User.Identity;
+            string uId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             return Json(new SuccessResult());
         }
 
@@ -39,7 +47,6 @@ namespace WebUI.Controllers
                 return Json(new ErrorResult(userExists.ErrorMessage));
             };
             var registerResult = _authService.Register(entity, entity.Password);
-            //_authService.CreateAccessToken(registerResult.Data);
            return Json("Success:","true");
  
 

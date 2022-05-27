@@ -23,13 +23,13 @@ namespace Web.UI.MVC.Jquery.Controllers
 
         public IActionResult Index()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //    QueryParameter parameter3 = new QueryParameter();
-            string email = "furkankorkusuz2@gmail.com";
-            User user = new User();
-            user.Email = email;
-            user.FirstName = "Furkan";
-            _userService.GetByPattern(new { user.Email, user.FirstName });
+            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ////    QueryParameter parameter3 = new QueryParameter();
+            //string email = "furkankorkusuz2@gmail.com";
+            //User user = new User();
+            //user.Email = email;
+            //user.FirstName = "Furkan";
+            //_userService.GetByPattern(new { user.Email, user.FirstName });
 
             return View();
         }

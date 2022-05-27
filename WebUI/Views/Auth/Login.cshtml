@@ -4,28 +4,28 @@
 }
 
 <div class="render-container">
-    <div id="logon-form" style="padding-top:.2em;" class="row">
+    <div id="login-form" style="padding-top:.2em;" class="row">
 
         <div class="col-12 col-xl-3 col-lg-3"></div>
         <div class="col-12 col-xl-6 col-lg-6" style="background-color:#f7f7f7;padding:.5em;border-radius:3px;box-shadow:.1px .1px 7px .5px #aaa ">
             <div style="text-align:center;font-size:1.7em;border-bottom:1px solid #ccc;margin-bottom:.5em;">Giriş yap</div>
             <div class="form-group">
-                <label for="logonEmail"><i class="fas fa-envelope"></i> Email</label>
-                <input type="email" class="form-control" id="logonEmail" placeholder="Email">
+                <label for="loginEmail"><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" class="form-control" id="loginEmail" placeholder="Email">
             </div>
             <div class="form-group">
-                <label for="logonPassword"><i class="fas fa-lock"></i> Şifre</label>
-                <input type="password" class="form-control" id="logonPassword" placeholder="Password">
+                <label for="loginPassword"><i class="fas fa-lock"></i> Şifre</label>
+                <input type="password" class="form-control" id="loginPassword" placeholder="Password">
             </div>
             <div class="form-group form-check">
-                <input style="height:17px;width:17px;" type="checkbox" class="form-check-input" id="logonRememberMe">
-                <label class="form-check-label" for="logonRememberMe"> <i class="fas fa-child"></i> Beni hatırla</label>
+                <input style="height:17px;width:17px;" type="checkbox" class="form-check-input" id="loginRememberMe">
+                <label class="form-check-label" for="loginRememberMe"> <i class="fas fa-child"></i> Beni hatırla</label>
             </div>
             <div class="form-group">
                 <a onclick="List.ForgotPassword()" href="#"><i class="far fa-frown-open"></i> Şifremi unuttum</a>
             </div>
-            <div id="logonError" style="display:none;" class="alert alert-danger"></div>
-            <button onclick="List.Logon()" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Giriş</button>
+            <div id="loginError" style="display:none;" class="alert alert-danger"></div>
+            <button onclick="List.Login()" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Giriş</button>
             <div style="border-top:1px solid #ccc;margin-top:1em;">Ya da Yeni Üyelik Oluştur </div>
             <button onclick="List.OpenCreateForm()" class="btn btn-success btn-block"><i class="fas fa-user-plus"></i> Üye ol</button>
         </div>
@@ -49,7 +49,7 @@
                 <button id="send-forgot-password" onclick="List.SendForgotPasswordLink()" class="btn btn-primary btn-block"><i class="fas fa-envelope"></i> Gönder</button>
             </div>
                 <div class="form-group">
-                    <a onclick="List.OpenLogonForm()" href="#"><i class="fas fa-chevron-left"></i> Geri Dön</a>
+                    <a onclick="List.OpenLoginForm()" href="#"><i class="fas fa-chevron-left"></i> Geri Dön</a>
                 </div>
             </div>
         <div class="col-12 col-xl-3 col-lg-3"></div>
@@ -88,7 +88,7 @@
             <div id="createError" class="alert alert-danger" style="display:none;"></div>
             <button onclick="List.CreateAccount()" class="btn btn-success btn-block"><i class="fas fa-user-plus"></i> Üye ol</button>
             <div style="border-top:1px solid #ccc;margin-top:1em;">Zaten hesabınız var mı? </div>
-            <button onclick="List.OpenLogonForm()" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Giriş Yapın</button>
+            <button onclick="List.OpenLoginForm()" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Giriş Yapın</button>
         </div>
         <div class="col-12 col-xl-3 col-lg-3"></div>
     </div>
@@ -104,5 +104,5 @@
 </div>
 
 @section scripts {
-    <script type="text/javascript" src="~/Scripts/User/Login.js?@Core.UI.WebUI.Version.JS"></script>
+    <script type="text/javascript" src="~/Scripts/Auth/Login.js?@Core.UI.WebUI.Version.JS"></script>
 }
