@@ -331,8 +331,8 @@ namespace Core.DataAccess.Dapper
             string table = string.IsNullOrEmpty(tableName) ? _tableName : tableName;
 
             T entity = null;
-            var geeg = pattern.GetType().GetProperties().ToDictionary(property => property.Name, property => property.GetValue(pattern));
-            string filter = String.Join(" and ", geeg.Select(x => x.Key + "=@" + x.Key));
+            var pttrn = pattern.GetType().GetProperties().ToDictionary(property => property.Name, property => property.GetValue(pattern));
+            string filter = String.Join(" and ", pttrn.Select(x => x.Key + "=@" + x.Key));
 
             string strSql = @$" Select *
                             from {table}
