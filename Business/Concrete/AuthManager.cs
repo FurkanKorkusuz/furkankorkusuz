@@ -31,7 +31,6 @@ namespace Business.Concrete
         {
             var claims = _userService.GetClaimsByUserID(user.ID);
             var accessToken = _tokenHelper.CreateToken(user, claims.Data);
-            HttpContext  ("tkn", );
             return new SuccessDataResult<AccessToken>(accessToken);
         }
 

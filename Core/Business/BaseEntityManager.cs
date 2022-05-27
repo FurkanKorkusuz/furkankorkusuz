@@ -43,7 +43,6 @@ namespace Core.Utilities.Business
                 return new ErrorDataResult<List<TEntity>>(ex.Message);
             }
         }
-        [BaseSecuredOperation()]
         public virtual IDataResult<List<TEntity>> GetList(QueryParameter queryParameter)
         {
             try
