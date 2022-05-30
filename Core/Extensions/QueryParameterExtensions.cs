@@ -69,7 +69,7 @@ namespace Core.Extensions
             qp.OrderBy.Add(new QueryOrderBy
             {
                 OrderBy=sort,
-                IsAcending= isAscending
+                IsAscending= isAscending
             });
             return qp;
         }

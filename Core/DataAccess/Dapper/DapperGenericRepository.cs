@@ -128,17 +128,18 @@ namespace Core.DataAccess.Dapper
             var getQuery = new StringBuilder($"SELECT ");
             if (qp.Select == null)
             {
-                getQuery.AppendLine("*");
+                getQuery.Append("*\n");
             }
             else
             {
-                qp.Select.ForEach(s => getQuery.AppendLine($"[{s}],"));
-                getQuery.Remove(getQuery.Length - 1, 1); //remove last ,
+                getQuery.AppendJoin(", ",qp.Select);
+                //qp.Select.ForEach(s => getQuery.AppendLine($"[{s}],"));
+                //getQuery.Remove(getQuery.Length - 1, 1); //remove last ,
             }
 
             // FROM
             qp.TableName = string.IsNullOrEmpty(qp.TableName) ? _tableName : qp.TableName;
-            getQuery.AppendLine($"FROM {qp.TableName}");
+            getQuery.Append($"\nFROM {qp.TableName}");
 
             // JOIN
             if (qp.Joins.Count > 0)
@@ -148,16 +149,16 @@ namespace Core.DataAccess.Dapper
                     switch (join.joinType)
                     {
                         case JoinType.InnerJoin:
-                            getQuery.Append($"JOIN");
+                            getQuery.Append($"\nJOIN");
                             break;
                         case JoinType.LeftJoin:
-                            getQuery.Append($"LEFT JOIN");
+                            getQuery.Append($"\nLEFT JOIN");
                             break;
                         case JoinType.RightJoin:
-                            getQuery.Append($"RIGHT JOIN");
+                            getQuery.Append($"\nRIGHT JOIN");
                             break;
                         case JoinType.OuterJoin:
-                            getQuery.Append($"OUTER JOIN");
+                            getQuery.Append($"\nOUTER JOIN");
                             break;
                     }
 
@@ -167,14 +168,13 @@ namespace Core.DataAccess.Dapper
             }
 
             // WHERE
-            getQuery.AppendLine(Filter(qp.FilterList, out  parameters));
+            getQuery.Append(Filter(qp.FilterList, out  parameters));
 
             // GROUP BY
             if (qp.GroupBy!=null)
             {
-                getQuery.Append("GROUP BY ");
-                qp.GroupBy.ForEach(g => getQuery.AppendLine(g + ","));
-                getQuery.Remove(getQuery.Length - 1, 1); //remove last ,
+                getQuery.Append("\nGROUP BY ");
+                getQuery.AppendJoin(", ", qp.GroupBy);
             }
 
             // HAVING
@@ -183,13 +183,13 @@ namespace Core.DataAccess.Dapper
             // ORDER BY
             if (qp.OrderBy.Count>0)
             {
-                getQuery.Append("ORDER BY ");
-                qp.OrderBy.ForEach(o => getQuery.AppendLine($"{o.OrderBy} {(o.IsAcending ? "" : "DESC")},"));
-                getQuery.Remove(getQuery.Length - 1, 1); //remove last ,
+                getQuery.Append("\nORDER BY ");
+                //qp.OrderBy.ForEach(o => getQuery.Append($"{o.OrderBy} {(o.IsAcending ? "" : "DESC")},"));
+                getQuery.AppendJoin(", ", qp.OrderBy.Select(x=>x.IsAscending ? x.OrderBy + " ASC" : x.OrderBy + " DESC"));
 
                 // OFFSET kullanılması için ORDER BY olması gerekir.
                 //OFFSET @rowNumber rows fetch next @rowPerPage rows only
-                getQuery.AppendLine($"OFFSET {qp.RowNumber} rows fetch next {qp.RowPerPage} rows only");
+                getQuery.Append($"\nOFFSET {qp.RowNumber} rows fetch next {qp.RowPerPage} rows only");
 
 
             }
@@ -243,54 +243,54 @@ namespace Core.DataAccess.Dapper
 
         private string Filter(List<QueryFilter> filters,out Dictionary<string, object> parameters)
         {
-            var qf = new StringBuilder("Where 1=1");
+            var qf = new StringBuilder("\nWhere 1=1");
             parameters = new Dictionary<string, object>();
             foreach (QueryFilter filter in filters)
             {
                 switch (filter.conditionOperator)
                 {
                     case QueryFilter.ConditionOperator.Equals:
-                        qf.Append($" and {filter.FilterKey} = @{filter.FilterKey},");
+                        qf.Append($"\nand {filter.FilterKey} = @{filter.FilterKey},");
                         parameters.Add(filter.FilterKey, filter.FilterValue);
                         break;
                     case QueryFilter.ConditionOperator.EqualsNot:
-                        qf.Append($" and {filter.FilterKey} != {filter.FilterKey},");
+                        qf.Append($"\nand {filter.FilterKey} != {filter.FilterKey},");
                         parameters.Add(filter.FilterKey, filter.FilterValue);
                         break;
                     case QueryFilter.ConditionOperator.Bigger:
-                        qf.Append($" and {filter.FilterKey} > {filter.FilterKey},");
+                        qf.Append($"\nand {filter.FilterKey} > {filter.FilterKey},");
                         parameters.Add(filter.FilterKey, filter.FilterValue);
                         break;
                     case QueryFilter.ConditionOperator.Smaller:
-                        qf.Append($" and {filter.FilterKey} < {filter.FilterKey},");
+                        qf.Append($"\nand {filter.FilterKey} < {filter.FilterKey},");
                         parameters.Add(filter.FilterKey, filter.FilterValue);
                         break;
                     case QueryFilter.ConditionOperator.EqBigger:
-                        qf.Append($" and {filter.FilterKey} >= {filter.FilterKey},");
+                        qf.Append($"\nand {filter.FilterKey} >= {filter.FilterKey},");
                         parameters.Add(filter.FilterKey, filter.FilterValue);
                         break;
                     case QueryFilter.ConditionOperator.EqSmaller:
-                        qf.Append($" and {filter.FilterKey} <= {filter.FilterKey},");
+                        qf.Append($"\nand {filter.FilterKey} <= {filter.FilterKey},");
                         parameters.Add(filter.FilterKey, filter.FilterValue);
                         break;
                     case QueryFilter.ConditionOperator.In:
-                        qf.Append($" and {filter.FilterKey} in({filter.FilterKey}),");
+                        qf.Append($"\nand {filter.FilterKey} in({filter.FilterKey}),");
                         parameters.Add(filter.FilterKey, filter.FilterValue);
                         break;
                     case QueryFilter.ConditionOperator.NotIn:
-                        qf.Append($" and {filter.FilterKey} not in ({filter.FilterKey}),");
+                        qf.Append($"\nand {filter.FilterKey} not in ({filter.FilterKey}),");
                         parameters.Add(filter.FilterKey, filter.FilterValue);
                         break;
                     case QueryFilter.ConditionOperator.Like:
-                        qf.Append($" and {filter.FilterKey} like%{filter.FilterKey}%,");
+                        qf.Append($"\nand {filter.FilterKey} like%{filter.FilterKey}%,");
                         parameters.Add(filter.FilterKey, filter.FilterValue);
                         break;
                     case QueryFilter.ConditionOperator.NotLike:
-                        qf.Append($" and {filter.FilterKey} not like%{filter.FilterKey}%,");
+                        qf.Append($"\nand {filter.FilterKey} not like%{filter.FilterKey}%,");
                         parameters.Add(filter.FilterKey, filter.FilterValue);
                         break;
                     default:
-                        qf.Append($" and {filter.FilterKey} = {filter.FilterKey},");
+                        qf.Append($"\nand {filter.FilterKey} = {filter.FilterKey},");
                         parameters.Add(filter.FilterKey, filter.FilterValue);
                         break;
                 }

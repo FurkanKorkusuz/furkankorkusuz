@@ -9,6 +9,6 @@ namespace Core.DataAccess.Dapper
     public class QueryOrderBy
     {
         public string OrderBy { get; set; }
-        public bool IsAcending { get; set; } = true;
+        public bool IsAscending { get; set; } = true;
     }
 }

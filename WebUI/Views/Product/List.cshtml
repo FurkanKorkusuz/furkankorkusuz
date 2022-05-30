@@ -1,0 +1,16 @@
+﻿
+@{
+    Layout = "~/Views/Shared/BasePage.cshtml";
+}
+<div id="render-container">
+    <div id="roles-container" style="margin:3px;">
+        <div class="table-header" style="margin:2px;"><button class="btn btn-success" onclick="List.AddDialog()"><i class="fas fa-plus-circle"></i> Ekle</button></div>
+        <div id="entityList" class="row">
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/Scripts/Product/List.js?@Core.UI.WebUI.Version.JS"></script>
+}
+

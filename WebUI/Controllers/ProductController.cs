@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.DataAccess.Dapper;
 using Core.Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,10 +13,27 @@ namespace WebUI.Controllers
         {
             _productService = productService;
         }
+
+        #region LİSTELEME İŞLEMLERi
         public IActionResult List()
         {
             return View();
         }
+
+        [HttpPost]
+        public JsonResult GetList(QueryParameter qp)
+        {
+            return Json(_productService.GetList(qp));
+        }
+
+        [HttpPost]
+        public JsonResult Get(object pattern)
+        {
+            return Json(_productService.GetByPattern(pattern));
+        }
+
+        #endregion
+
 
         #region EKLEME İŞLEMLERİ
         public IActionResult Add()
@@ -27,8 +45,8 @@ namespace WebUI.Controllers
         public IActionResult Add(int a)
         {
             Product entity = new Product();
-            entity.ProductName = "ÜRÜN 1";
-            entity.ProductCode = "Urn_1";
+            entity.ProductName = "ÜRÜN 2";
+            entity.ProductCode = "Urn_2";
             entity.UrlName = "furkankorkusuz.com";
             entity.CreatedDate = DateTime.Now.ToString();
             entity.BrandID = 2;
@@ -45,5 +63,27 @@ namespace WebUI.Controllers
             return Json(_productService.Add(entity));
         }
         #endregion
+
+
+    
+
+
+      
+   
+
+
+
+        [HttpPost]
+        public JsonResult Edit(Product entity)
+        {
+            return Json(_productService.Update(entity));
+        }
+
+
+        [HttpPost]
+        public JsonResult Delete(int id)
+        {
+            return Json(_productService.Delete(id));
+        }
     }
 }
