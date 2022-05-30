@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Business.ValidationRules.FluentValidation
 {
-    public class ProductValidator : AbstractValidator<Brand>
+    public class ProductValidator : AbstractValidator<Product>
     {
         public ProductValidator()
         {
-            RuleFor(p => p.BrandName).NotEmpty().WithMessage("Ürün adı boş geçilemez.");
-            RuleFor(p => p.BrandName).Length(3,500).WithMessage("Ürün 3 ile 500 karakter arasında olmalıdır.");
-            RuleFor(p => p.BrandName).NotEmpty().WithMessage("Ürün fiyatı boş geçilemez.");
-            RuleFor(p => p.ID).GreaterThanOrEqualTo(10).WithMessage("CategoryID 0 olanın ShowPrice değeri 10 dan büyük ya da eşit olmalı.");
+            RuleFor(p => p.ProductName).NotEmpty().WithMessage("Ürün adı boş geçilemez.");
+            RuleFor(p => p.ProductName).Length(3,500).WithMessage("Ürün 3 ile 500 karakter arasında olmalıdır.");
+            //RuleFor(p => p.CostPrice).NotEmpty().WithMessage("Ürün fiyatı boş geçilemez.");
+           // RuleFor(p => p.ID).GreaterThanOrEqualTo(10).WithMessage("CategoryID 0 olanın ShowPrice değeri 10 dan büyük ya da eşit olmalı.");
 
             // Özel kuralları böyle çağırırım.
-            RuleFor(p => p.BrandName).Must(MyRule);
+            //RuleFor(p => p.ProductName).Must(MyRule);
         }
 
         // Özel kurallar yazabilirim

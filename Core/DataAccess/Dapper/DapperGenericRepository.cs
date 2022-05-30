@@ -370,11 +370,12 @@ namespace Core.DataAccess.Dapper
         {
             int id = 0;
             var insertQuery = GenerateAddQuery();
+            var parameter = GenerateParameter(entity);
             try
             {
                 using (var cn = CreateConnection())
                 {
-                    id = cn.ExecuteScalar<int>(insertQuery, entity);
+                    id = cn.ExecuteScalar<int>(insertQuery, parameter);
                 }
             }
             catch (Exception ex)
@@ -385,8 +386,25 @@ namespace Core.DataAccess.Dapper
 
         }
 
+        private object GenerateParameter(T entity)
+        {
+            Dictionary<string, object> keyValues = new Dictionary<string, object>();
+            foreach (PropertyInfo prop in typeof(T).GetProperties())
+            {
+                if (prop.Name.ToLower().Contains("date"))
+                {
+                    string value = Convert.ToDateTime(prop.GetValue(entity)).ToString("yyyy-MM-dd HH:ss.fff");
+                    prop.SetValue(entity, value);
+                }
+                keyValues.Add(prop.Name, prop.GetValue(entity));
+            }
+            return keyValues;
+        }
+
         private string GenerateAddQuery()
         {
+          
+
             var insertQuery = new StringBuilder($"INSERT INTO {_tableName} ");
 
             insertQuery.Append("(");
@@ -404,7 +422,9 @@ namespace Core.DataAccess.Dapper
                             OUTPUT INSERTED.ID
                             VALUES (");
 
-            properties.ForEach(prop => { insertQuery.Append($"@{prop},"); });
+            properties.ForEach(prop => {              
+                insertQuery.Append($"@{prop},"); 
+            });
 
             insertQuery
                 .Remove(insertQuery.Length - 1, 1)

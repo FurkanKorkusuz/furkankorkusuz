@@ -31,6 +31,10 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JWTHelper>().As<ITokenHelper>();
 
+
+            builder.RegisterType<ProductManager>().As<IProductService>();
+            builder.RegisterType<DpProductDal>().As<IProductDal>();
+
             // Mevcut assembly' ye ulaş.
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
