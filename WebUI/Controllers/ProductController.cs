@@ -22,7 +22,7 @@ namespace WebUI.Controllers
 
         [HttpPost]
         public JsonResult GetList(QueryParameter qp)
-        {
+         {
             return Json(_productService.GetList(qp));
         }
 

@@ -74,7 +74,7 @@ footer {
     bottom: 0;
     left: 0;
     background-color: #000;
-    opacity: 0.3;
+    opacity: 0.7;
     text-align: center;
     color: #fff;
     padding: 20px 0;
@@ -83,13 +83,21 @@ footer {
 }
 
     #AjaxLoadingImage > .fa-spin {
-        background-color: #000;
+        background-color: rgba(0,0,0,0.5 );
         margin-top: 10%;
     }
 
 .fa-spin::before {
     font-weight: bold;
-    font-size: 10vw;
+    font-size: 13vw;
+}
+@media (max-width: 767.98px) {
+
+    .fa-spin::before {
+        font-weight: bold;
+        font-size: 21vw;
+        top:300px;
+    }
 }
 
 .row {
@@ -687,5 +695,3 @@ input.price, input.weight, input.dimension, input.percentage, input.decimal, inp
     max-width: 100%;
     width: 75%;
 }
-
-
