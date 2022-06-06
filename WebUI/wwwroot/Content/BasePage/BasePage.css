@@ -29,6 +29,7 @@ body {
     }
     body main div#renderBody {
         padding: 0;
+        width:87%;
     }
 @media (max-width: 767.98px) {
 
@@ -217,6 +218,7 @@ div.page-footer {
     text-align: left;
     background-color: #005555;
     padding:0;
+    width:13%;
 }
 
     #sideBar ul li {
