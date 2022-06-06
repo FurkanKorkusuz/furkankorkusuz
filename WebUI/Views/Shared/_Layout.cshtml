@@ -4,8 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Web.UI.MVC.Jquery</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+   @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />*@
+    <link href="~/Content/BasePage/BasePage.css?@Core.UI.WebUI.Version.CSS" rel="stylesheet" />
+	<link href="~/Content/Font-awsome-5.13.0/all.min.css?@Core.UI.WebUI.Version.CSS" rel="stylesheet" />
+	<link href="~/Content/bootstrap-4.3.1/css/bootstrap.min.css?@Core.UI.WebUI.Version.CSS" rel="stylesheet" />
+	<link href="~/Content/BasePage/select2.min.css?@Core.UI.WebUI.Version.CSS" rel="stylesheet" />
+	<link href="~/Content/BasePage/bootstrap-datepicker.min.css?@Core.UI.WebUI.Version.CSS" rel="stylesheet" />
+
+    
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/Scripts/bootstrap-4.3.1/js/bootstrap.bundle.min.js?@Core.UI.WebUI.Version.JS"></script>
+	<script src="~/Scripts/BasePage/BasePage.js?@Core.UI.WebUI.Version.JS"></script>
+	<script src="~/Scripts/BasePage/BackendHelper.js?@Core.UI.WebUI.Version.JS"></script>
+	<script src="~/Scripts/BasePage/ModalHelper.js?@Core.UI.WebUI.Version.JS"></script>
+	<script src="~/Scripts/BasePage/select2.min.js?@Core.UI.WebUI.Version.JS"></script>
+	<script src="~/Scripts/BasePage/bootstrap-datepicker.min.js?@Core.UI.WebUI.Version.JS"></script>
 </head>
 <body>
     <nav id="baseNav" class="navbar navbar-expand-md navbar-left" style="background-color: #005555;border-bottom: 2px solid #fff;">
@@ -33,16 +47,34 @@
 
     <main role="main">
         <div class="row">
-            <div id="sideBar" class="col-xl-2 col-md-2 col-lg-2 col-sm-12" style=" border-bottom: 3px solid #fff;text-align:center;background-color:#fcfcfc;">
-                <div style="padding:10px;">
-                    <img src="~/Uploads/Images/fk.com/developer.jpg" style="max-width:100%;border-radius:50%;" />
-                </div>
-                <h3 style="color:#777;">Furkan KORKUSUZ</h3>
-                <i>
-                    Mekatronic Engineer <br>
-                    Software Developer<br><br>
-                    <b>&#8221;Öğrenmenin sonsuzluğunu keşfettim...&#8221;</b>
-                </i>
+            <div id="sideBar" class="col-xl-2 col-md-2 col-lg-2 col-sm-12" >
+               <ul class="nav flex-column">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+ <li class="nav-item">
+    <a class=" nav-link"  data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      Link
+    </a>
+    <div class="collapse" id="navbarToggleExternalContent">
+      <ul>
+            <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+      </ul>
+  </div>
+  </li>
+  <li class="nav-item">
+   <a class="nav-link" href="#">Link</a>
+  </li>
+
+</ul>
             </div>
 
             <div id="renderBody" class="render-body col-xl-7 col-md-7 col-lg-7 col-sm-12">

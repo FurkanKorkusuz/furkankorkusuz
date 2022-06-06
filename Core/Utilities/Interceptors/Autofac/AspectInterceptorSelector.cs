@@ -33,7 +33,7 @@ namespace Core.Utilities.Interceptors.Autofac
                 classAttributes.AddRange(myMethod.GetCustomAttributes<MethodInterceptionBaseAttribute>(true));
 
 
-                // Tüm hata exception larımı yakalamak için bu kodu yazıyorum.
+                // Tüm hata exception larımı yakalamak için bu kodu yazıyorum.                
                 classAttributes.Add(new ExceptionLogAspect());
 
                 // metot attribute ile aspect olayı gerçekleşecek olan attributler

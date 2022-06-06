@@ -212,24 +212,45 @@ div.page-footer {
 
 
 
+#sideBar {
+    border-bottom: 3px solid #fff;
+    text-align: left;
+    background-color: #005555;
+    padding:0;
+}
 
+    #sideBar ul li {
+        border-bottom: 1px solid #fff;
+        padding: 3px;
+        color: #fff;
+    }
+        #sideBar ul li a {
+            font-size: 21px;
+            padding: 5px;
+            color: #fff;
+        }
 
+        #sideBar ul li ul {
+            list-style:none;
+            padding-left:11px
+            
+        }
+            #sideBar ul li ul li {
+                padding-left: 3px;
+                
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.table-card .card-body {
+            }
+            #sideBar ul li ul :first-child {
+                /*border-top: 1px solid #fff;*/
+            }
+                #sideBar ul li ul :last-child {
+                    border-bottom: none;
+                }
+            #sideBar ul li ul li a {
+                border: none;
+            }
+ 
+    .table-card .card-body {
     position: relative;
 }
 
