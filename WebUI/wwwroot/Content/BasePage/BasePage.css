@@ -36,6 +36,94 @@ body {
     #sideBar{display:none;}
 }
 
+
+#baseNav {
+    background-color: #005555;
+    border-bottom: 2px solid #fff;
+    position: fixed;
+    width: 100vw;
+}
+
+
+#sideBar {
+    border-bottom: 3px solid #fff;
+    text-align: left;
+    background-color: #005555;
+    padding: 0;
+    width: 14%;
+    position: fixed;
+    height:100%;
+    overflow-y: auto;
+    top:3.5rem;
+}
+
+    #sideBar ul li {
+        border-bottom: 1px solid #fff;
+        padding: 3px;
+        color: #fff;
+    }
+    #sideBar ul:first-child{
+        border-top: 1px solid #fff;
+    }
+
+        #sideBar ul li a {
+            font-size: 21px;
+            padding: 5px;
+            color: #fff;
+        }
+
+    #sideBar ul li ul {
+        list-style: none;
+        padding-left: 11px;
+    }
+
+        #sideBar ul li ul li {
+            padding-left: 3px;
+            background-color: #002C2C;
+        }
+
+            #sideBar ul li ul :first-child {
+                /*border-top: 1px solid #fff;*/
+            }
+
+            #sideBar ul li ul :last-child {
+                border-bottom: none;
+            }
+
+            #sideBar ul li ul li a {
+                border: none;
+            }
+
+
+#renderBody {
+    margin-left: 14%;
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    /*background: #00C0C0;*/
+    /*background: #550055;*/
+    /*background: #FF9100;*/
+    background: #00BFBF;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #005555;
+    }
+
 #scrollTopButton {
     display: none;
     position: fixed;
@@ -213,45 +301,7 @@ div.page-footer {
 
 
 
-#sideBar {
-    border-bottom: 3px solid #fff;
-    text-align: left;
-    background-color: #005555;
-    padding:0;
-    width:13%;
-}
 
-    #sideBar ul li {
-        border-bottom: 1px solid #fff;
-        padding: 3px;
-        color: #fff;
-    }
-        #sideBar ul li a {
-            font-size: 21px;
-            padding: 5px;
-            color: #fff;
-        }
-
-        #sideBar ul li ul {
-            list-style:none;
-            padding-left:11px
-            
-        }
-            #sideBar ul li ul li {
-                padding-left: 3px;
-                
-
-            }
-            #sideBar ul li ul :first-child {
-                /*border-top: 1px solid #fff;*/
-            }
-                #sideBar ul li ul :last-child {
-                    border-bottom: none;
-                }
-            #sideBar ul li ul li a {
-                border: none;
-            }
- 
     .table-card .card-body {
     position: relative;
 }
