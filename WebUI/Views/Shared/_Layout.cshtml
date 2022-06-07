@@ -28,7 +28,7 @@
             <span style="color: #fff;"><i class="fas fa-bars"></i></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">           
             @Html.Raw(MVC.Web.UI.Controllers.BasePage.BasePageMenu())
         </div>
     </nav>
@@ -49,6 +49,9 @@
         <div class="row">
             <div id="sideBar"  >
                <ul class="nav flex-column">
+                    <li id="siteBrand" class="nav-item">
+                      <a href="#">Alkapida Panel</a>
+                    </li>
                     <li class="nav-item">
                       <a class="nav-link active" href="#">Active</a>
                     </li>
@@ -57,12 +60,12 @@
                     </li>
                     <li class="nav-item">
                         <a class=" nav-link"  data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" ar  ia-expanded="false" aria-label="Toggle navigation">
-                        Link
+                        <i class="fas fa-cubes"></i> Ürünler <i class="fas fa-angle-right"></i>
                         </a>
                         <div class="collapse" id="navbarToggleExternalContent">
                         <ul>
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">Active</a>
+                                <a class="nav-link active" href="/Product/List">Active</a>
                             </li>
                             <li class="nav-item">
                             <a class="nav-link" href="#">Link</a>
