@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Core.Entities.DTOs;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -13,6 +14,7 @@ namespace API.Controllers
         {
             _authService = authService;
         }
+        [EnableCors("MyPolicy")]
         [HttpPost("login")]
         public IActionResult Login(UserForLoginDto userForLoginDto)
         {
@@ -24,7 +26,7 @@ namespace API.Controllers
             var result = _authService.CreateAccessToken(userToLogin.Data);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
 
             return BadRequest(result.InfoMessage);

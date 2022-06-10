@@ -5,7 +5,12 @@ using Core.Utilities.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace WebUI.Controllers
 {
@@ -23,19 +28,33 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(UserForLoginDto userForLoginDto)
+        public IActionResult Login2(UserForLoginDto userForLoginDto)
         {
-            var userToLogin = _authService.Login(userForLoginDto);
-            if (!userToLogin.Success)
-            {
-                return Json(new ErrorResult());
-            }
-            _authService.CreateAccessToken(userToLogin.Data);
-            IHttpContextAccessor _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
-            var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var id = _httpContextAccessor.HttpContext.User.Identity;
-            string uId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            //var userToLogin = _authService.Login(userForLoginDto);
+            //if (!userToLogin.Success)
+            //{
+            //    return Json(new ErrorResult());
+            //}
+            //_authService.CreateAccessToken(userToLogin.Data);
             return Json(new SuccessResult());
+
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = new Uri("http://localhost:35743/Api");
+                var request = new HttpRequestMessage(HttpMethod.Post, "/login");
+                var data = new List<KeyValuePair<string, string>>();
+                    data.Add(new KeyValuePair<string, string>("Email", userForLoginDto.Email));
+                    data.Add(new KeyValuePair<string, string>("Password", userForLoginDto.Password));
+                request.Content = new FormUrlEncodedContent(data);
+                var response = httpClient.SendAsync(request).Result;
+                return Json(response.Content.ReadAsStringAsync().Result);
+            }
+            //return Json("");
         }
 
         [HttpPost]

@@ -17,7 +17,7 @@ namespace API.Controllers
         }
 
 
-        [HttpGet("getlist")]
+        [HttpPost("getlist")]
         public IActionResult GetList(int id)
         {
 
@@ -34,7 +34,7 @@ namespace API.Controllers
         }
 
 
-        [HttpGet("getbyid")]
+        [HttpPost("getbyid")]
         // [Authorize(Roles ="Brand.Get")]
         public IActionResult GetByPattern(int id)
         {

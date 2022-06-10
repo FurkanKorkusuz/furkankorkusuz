@@ -51,9 +51,23 @@ namespace API
             // Örneðin bu site alkapida.com domaini ile yayýnlanacaksa bu web apý nin orjinal kullanýcýsý (ya da admin gibi birþey) bu domain olacaktýr. O zaman builder.WithOrigins("https://alkapida.com")  yazýlmalýdýr.
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowOrigin",
-                                builder => builder.WithOrigins("http://localhost:3000"));
+                options.AddPolicy(name: "MyPolicy",
+                                 builder =>
+                                 {
+                                     //builder.WithOrigins("https://localhost:3000"
+                                     //                    ,
+                                     //                    "https://localhost:44354"
+                                     //                    //"http://localhost:44354/Auth/Login"
+                                     //                    );
+                                     builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+
+                                 });
+
             });
+
+
 
             // appsettings deki tokenOptions u oku
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
@@ -99,11 +113,13 @@ namespace API
 
             // Yukarýda Cors ekledik burada çaðýrmamýz lazým (burada sýra önemli.)
             // Buradaki builder http://localhost:3000 sitesinden gelen her türlü (get,post,put,delete) istege cevap ver demektir. 
-            app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
+
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("MyPolicy");
 
             // Sonradan eklendi. 
             app.UseAuthentication(); // API ye kimler eriþebilir.
@@ -114,7 +130,8 @@ namespace API
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers()
+                .RequireCors("MyPolicy");
             });
         }
     }
