@@ -14,4 +14,5 @@ namespace Core.Entities.DTOs
         public bool Remember { get; set; }
 
     }
+
 }

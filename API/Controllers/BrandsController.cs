@@ -1,6 +1,9 @@
 ﻿using Business.Abstract;
 using Core.DataAccess.Dapper;
+using Core.Entities.DTOs;
 using Core.Extensions;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -17,14 +20,13 @@ namespace API.Controllers
         }
 
 
-        [HttpPost("getlist")]
-        public IActionResult GetList(int id)
+        //[EnableCors("MyPolicy")]
+        [HttpPost("GetList")]
+        //  [Authorize]
+        public IActionResult GetList(QueryParameter queryParameter)
         {
 
-            QueryParameter parameter2 = new QueryParameter();
-            parameter2.FilterList.Filter("ID", id);
-
-            var result = _brandService.GetList(parameter2);
+            var result = _brandService.GetList(queryParameter);
             if (result.Success)
             {
                 return Ok(result);
