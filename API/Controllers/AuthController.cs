@@ -21,7 +21,7 @@ namespace API.Controllers
             var userToLogin = _authService.Login(userForLoginDto);
             if (!userToLogin.Success)
             {
-                return BadRequest(userToLogin);
+                return Ok(userToLogin);
             };
             var result = _authService.CreateAccessToken(userToLogin.Data);
             if (result.Success)

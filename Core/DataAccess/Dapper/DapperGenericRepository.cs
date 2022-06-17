@@ -247,6 +247,11 @@ namespace Core.DataAccess.Dapper
             parameters = new Dictionary<string, object>();
             foreach (QueryFilter filter in filters)
             {
+                filter.FilterValue = filter.FilterValue.ToString();
+                if (String.IsNullOrEmpty(filter.FilterValue.ToString()))
+                {
+                    continue;
+                }
                 switch (filter.conditionOperator)
                 {
                     case QueryFilter.ConditionOperator.Equals:

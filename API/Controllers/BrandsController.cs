@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Text.Json;
 
 namespace API.Controllers
 {
@@ -25,7 +26,6 @@ namespace API.Controllers
         //  [Authorize]
         public IActionResult GetList(QueryParameter queryParameter)
         {
-
             var result = _brandService.GetList(queryParameter);
             if (result.Success)
             {

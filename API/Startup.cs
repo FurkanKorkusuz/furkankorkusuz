@@ -91,6 +91,10 @@ namespace API
                 };
             });
 
+
+            // JSON stringlerimde nesnelerimin adýný camelCase yapýyordu ancak ben default olarak yazýldýðý gibi gelmesini istedim. 
+            services.AddMvc().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
             // Swagger çalýþtýrmak için.
             services.AddSwaggerGen(c =>
             {

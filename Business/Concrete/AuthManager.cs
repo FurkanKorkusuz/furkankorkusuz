@@ -38,9 +38,9 @@ namespace Business.Concrete
         {
             // Kullanıcı var mı
            var usertoCheck=_userService.GetByPattern(new {Email= userForLoginDto.Email });
-            if (!usertoCheck.Success)
+            if (!usertoCheck.Success || usertoCheck.Data==null)
             {
-                return new ErrorDataResult<User>(AuthenticationMessage.UserNotFound);
+                return new ErrorDataResult<User>(AuthenticationMessage.UserNotFound, focus : "loginEmail");
             }
 
             //byte[] passwordHash, passwordSalt;
@@ -49,7 +49,7 @@ namespace Business.Concrete
             // Şifre eşleşiyor mu
             if (! HashingHelper.VerifyPasswordHash(userForLoginDto.Password, usertoCheck.Data.PasswordHash, usertoCheck.Data.PasswordSalt))
             {
-                return new ErrorDataResult<User>(AuthenticationMessage.PasswordError);
+                return new ErrorDataResult<User>(AuthenticationMessage.PasswordError,focus : "loginPassword");
             }
 
             return usertoCheck;
