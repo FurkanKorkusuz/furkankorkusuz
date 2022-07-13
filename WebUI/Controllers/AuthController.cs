@@ -41,20 +41,14 @@ namespace WebUI.Controllers
 
         }
         [HttpPost]
-        public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
-        {
-            using (var httpClient = new HttpClient())
+        public IActionResult Login(UserForLoginDto userForLoginDto)
+        { 
+            var userToLogin = _authService.Login(userForLoginDto);
+            if (!userToLogin.Success)
             {
-                httpClient.BaseAddress = new Uri("http://localhost:35743/Api");
-                var request = new HttpRequestMessage(HttpMethod.Post, "/login");
-                var data = new List<KeyValuePair<string, string>>();
-                    data.Add(new KeyValuePair<string, string>("Email", userForLoginDto.Email));
-                    data.Add(new KeyValuePair<string, string>("Password", userForLoginDto.Password));
-                request.Content = new FormUrlEncodedContent(data);
-                var response = httpClient.SendAsync(request).Result;
-                return Json(response.Content.ReadAsStringAsync().Result);
+                return Json(userToLogin);
             }
-            //return Json("");
+            return Json( _authService.CreateAccessToken(userToLogin.Data));
         }
 
         [HttpPost]
