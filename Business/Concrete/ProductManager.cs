@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.DataAccess.Dapper;
 using Core.Entities.Concrete;
@@ -30,12 +31,14 @@ namespace Business.Concrete
         {
             return base.Add(entity);
         }
+
+        [CacheAspect]
         public override IDataResult<List<Product>> GetList(QueryParameter queryParameter)
         {
-            IHttpContextAccessor _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
-            byte[] token;
-            _httpContextAccessor.HttpContext.Session.TryGetValue("Token",out token);
-            var Token = Encoding.ASCII.GetString(token);
+            //IHttpContextAccessor _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
+            //byte[] token;
+            //_httpContextAccessor.HttpContext.Session.TryGetValue("Token",out token);
+            //var Token = Encoding.ASCII.GetString(token);
             return base.GetList(queryParameter);
         }
     }

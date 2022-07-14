@@ -398,8 +398,8 @@ namespace Core.DataAccess.Dapper
             {
                 if (prop.Name.ToLower().Contains("date"))
                 {
-                    string value = Convert.ToDateTime(prop.GetValue(entity)).ToString("yyyy-MM-dd HH:ss.fff");
-                    prop.SetValue(entity, value);
+                    string value = Convert.ToDateTime(prop.GetValue(entity)).ToString("yyyy-MM-dd HH:ss");
+                    prop.SetValue(entity, Convert.ToDateTime(prop.GetValue(entity)));
                 }
                 keyValues.Add(prop.Name, prop.GetValue(entity));
             }

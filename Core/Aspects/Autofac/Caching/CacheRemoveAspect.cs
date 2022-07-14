@@ -21,8 +21,17 @@ namespace Core.Aspects.Autofac.Caching
             _cacheService = ServiceTool.ServiceProvider.GetService<ICacheService>();
         }
 
+        public CacheRemoveAspect()
+        {
+            _cacheService = ServiceTool.ServiceProvider.GetService<ICacheService>();
+        }
+
         protected override void OnSuccess(IInvocation invocation)
         {
+            //if (String.IsNullOrEmpty(_pattern))
+            //{
+            //    invocation.GenericArguments
+            //}
             _cacheService.RemoveByPattern(_pattern);
         }
     }

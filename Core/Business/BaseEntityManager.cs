@@ -1,4 +1,5 @@
 ﻿using Core.Aspects.Autofac.Authorization;
+using Core.Aspects.Autofac.Caching;
 using Core.DataAccess;
 using Core.DataAccess.Abstract;
 using Core.DataAccess.Dapper;
@@ -43,6 +44,8 @@ namespace Core.Utilities.Business
                 return new ErrorDataResult<List<TEntity>>(ex.Message);
             }
         }
+
+        
         public virtual IDataResult<List<TEntity>> GetList(QueryParameter queryParameter)
         {
             try
@@ -54,7 +57,7 @@ namespace Core.Utilities.Business
                 return new ErrorDataResult<List<TEntity>>(ex.Message);
             }
         }
-
+        [CacheRemoveAspect("")]
         public virtual IDataResult<TEntity> Add(TEntity entity)
         {
             try
