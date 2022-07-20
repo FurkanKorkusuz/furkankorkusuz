@@ -17,6 +17,7 @@ body {
     /*padding-top: 7rem;*/ /* navbar*/
     margin: 0px;
     overflow-x: hidden;
+    z-index:0;
 }
     body main {
         /*min-height: 60vh;*/
@@ -30,7 +31,7 @@ body {
     #renderBody {
         margin-top:3.5em;
         padding: 0;
-        width:86%;
+      /*  width:86%;*/
     }
 @media (max-width: 767.98px) {
 
@@ -42,9 +43,10 @@ body {
     background-color: #005555;
     border-bottom: 2px solid #fff;
     position: fixed;
-    width: 86vw;
-    margin-left: 14%;
+    width: 100vw;
+    /*margin-left: 14%;*/
     height: 3.5em;
+    z-index: 100000;
 }
 
 
@@ -97,7 +99,7 @@ body {
 
 
 #renderBody {
-    margin-left: 14%;
+    /*margin-left: 14%;*/
 }
 
 

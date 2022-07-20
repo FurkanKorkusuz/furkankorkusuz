@@ -22,7 +22,7 @@ namespace MVC.Web.UI.Controllers
                 [Admin]
    
                 <li class='nav-item'><a class='nav-link scrollto text-white' href='/Home/Index'><i class='fas fa-home'></i> Anasayfa</a></li>  
-                <li class='nav-item'><a class='nav-link scrollto text-white' href='/Project/List'><i class='fas fa-project-diagram'></i> Projeler</a></li>  
+                <li class='nav-item'><a class='nav-link scrollto text-white' href='/Product/List'><i class='fas fa-project-diagram'></i> Ürünler</a></li>  
                 <li class='nav-item'><a class='nav-link scrollto text-white' href='/Home/Contact'><i class='fas fa-phone-square-alt'></i> İletişim</a></li>  
                 <li class='nav-item'><a class='nav-link scrollto text-white' href='/Home/About'><i class='fas fa-user-graduate'></i>&nbsp;Hakkımda</a></li>   
                 <li class='nav-item'><a class='nav-link scrollto text-white' href='/Blog/List'><i class='fas fa-blog'></i>&nbsp;Blog</a></li>
@@ -33,8 +33,13 @@ namespace MVC.Web.UI.Controllers
                 </li>
             </ul>
         ";
-
-            if (! httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            var roleClaims = httpContextAccessor.HttpContext.User.ClaimRoles();
+            if (roleClaims.Contains("Admin"))
+            {
+            }
+            //httpContextAccessor.HttpContext.Session.SetString("e23e", "def");
+            //var dd = httpContextAccessor.HttpContext.Session.GetString("Token");
+            if (! httpContextAccessor.HttpContext.User.IsAdmin())
             {
                 htlmMenu = htlmMenu.Replace("[Admin]", " ");
                 htlmMenu = htlmMenu.Replace(

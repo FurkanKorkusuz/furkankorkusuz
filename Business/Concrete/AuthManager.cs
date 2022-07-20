@@ -10,9 +10,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Core.Utilities.IoC;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace Business.Concrete
 {
@@ -31,7 +32,7 @@ namespace Business.Concrete
         {
             var claims = _userService.GetClaimsByUserID(user.ID);
             var accessToken = _tokenHelper.CreateToken(user, claims.Data);
-            _httpContextAccessor.HttpContext.Session.Set("Token", Encoding.ASCII.GetBytes(accessToken.Token) );
+            _httpContextAccessor.HttpContext.Session.SetString("Token",accessToken.Token );
             return new SuccessDataResult<AccessToken>(accessToken);
         }
 

@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Core.DataAccess.Dapper;
 using Core.Entities.Concrete;
+using Core.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -22,7 +23,8 @@ namespace WebUI.Controllers
 
         [HttpPost]
         public JsonResult GetList(QueryParameter qp)
-         {
+        {
+           var roled= User.ClaimRoles();
             return Json(_productService.GetList(qp));
         }
 

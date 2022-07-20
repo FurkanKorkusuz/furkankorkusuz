@@ -109,6 +109,10 @@ namespace Web.UI.MVC.Jquery
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+
+
+          
+
             app.UseRouting();
 
 
@@ -116,7 +120,6 @@ namespace Web.UI.MVC.Jquery
             app.UseAuthentication(); // API ye kimler eriþebilir.
 
             app.UseAuthorization(); // Apý deki hangi mmetodlara kimler  eriþebilir
-
 
             // Sonradan eklendi. 
             app.UseSession(); //  Endpoints(sayfa yönlendirme) den önce olmasý gerek 
