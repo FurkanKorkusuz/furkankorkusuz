@@ -1,5 +1,6 @@
 ﻿using Core.Entities.Concrete;
 using Core.Extensions;
+using Core.UI.WebUI;
 using Core.Utilities.IoC;
 using Core.Utilities.Security.Authentication.Utils;
 using Core.Utilities.Security.Encryption;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -46,6 +48,10 @@ namespace Core.Utilities.Security.Authentication.JWT
                 operationClaims
                 );
             var jwtSecurityTokenHandler = new JwtSecurityTokenHandler().WriteToken(jwt);
+
+            // add Session with MVC.Web.UI
+
+            CreateSession(user, operationClaims);
             return new AccessToken
             {
                 Token = jwtSecurityTokenHandler,
@@ -75,6 +81,18 @@ namespace Core.Utilities.Security.Authentication.JWT
             claims.AddRoles(operationClaims.Select(o => o.OperationClaimName).ToArray());
             
             return claims;
+        }
+
+
+        private void CreateSession(User user, List<OperationClaim> operationClaims)
+        {
+
+            LoggedOnUser loggedOnUser = new LoggedOnUser(user, operationClaims);
+
+            string jsonString =  JsonConvert.SerializeObject(new { user = user, claims= operationClaims });
+            IHttpContextAccessor httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
+            httpContextAccessor.HttpContext.Session.SetString("user", jsonString);
+
         }
 
     }

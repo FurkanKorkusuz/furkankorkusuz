@@ -43,7 +43,7 @@ namespace WebUI.Controllers
         [HttpPost]
         public IActionResult Login(UserForLoginDto userForLoginDto)
         {
-            var userToLogin = _authService.Login(userForLoginDto);
+        var userToLogin = _authService.Login(userForLoginDto);
             if (!userToLogin.Success)
             {
                 return Json(userToLogin);

@@ -1,5 +1,6 @@
 ﻿
 using Core.Extensions;
+using Core.UI.WebUI;
 using Core.Utilities.IoC;
 using Core.Utilities.Security.Authentication;
 using Microsoft.AspNetCore.Http;
@@ -16,7 +17,6 @@ namespace MVC.Web.UI.Controllers
     {
         public static string BasePageMenu()
         {
-            IHttpContextAccessor httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
             string htlmMenu = @"
             <ul class='navbar-nav mr-auto'>
                 [Admin]
@@ -34,7 +34,7 @@ namespace MVC.Web.UI.Controllers
             </ul>
         ";
             
-            if (!httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            if (SessionFields.User==null)
             {
                 htlmMenu = htlmMenu.Replace("[Admin]", " ");
                 htlmMenu = htlmMenu.Replace(
@@ -57,7 +57,7 @@ namespace MVC.Web.UI.Controllers
 
 
            
-            if (httpContextAccessor.HttpContext.User.IsAdmin())
+            if (SessionFields.User.IsAdmin())
             {
                 htlmMenu = htlmMenu.Replace(
                  "[Admin]",
