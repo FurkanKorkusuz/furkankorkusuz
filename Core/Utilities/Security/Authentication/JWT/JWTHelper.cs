@@ -1,8 +1,11 @@
 ﻿using Core.Entities.Concrete;
 using Core.Extensions;
+using Core.Utilities.IoC;
 using Core.Utilities.Security.Authentication.Utils;
 using Core.Utilities.Security.Encryption;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -73,5 +76,7 @@ namespace Core.Utilities.Security.Authentication.JWT
             
             return claims;
         }
+
     }
+
 }

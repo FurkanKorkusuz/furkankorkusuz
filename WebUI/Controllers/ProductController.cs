@@ -24,7 +24,6 @@ namespace WebUI.Controllers
         [HttpPost]
         public JsonResult GetList(QueryParameter qp)
         {
-           var roled= User.ClaimRoles();
             return Json(_productService.GetList(qp));
         }
 

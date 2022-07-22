@@ -42,13 +42,15 @@ namespace WebUI.Controllers
         }
         [HttpPost]
         public IActionResult Login(UserForLoginDto userForLoginDto)
-        { 
+        {
             var userToLogin = _authService.Login(userForLoginDto);
             if (!userToLogin.Success)
             {
                 return Json(userToLogin);
             }
-            return Json( _authService.CreateAccessToken(userToLogin.Data));
+            var result = _authService.CreateAccessToken(userToLogin.Data);
+         
+            return Json(result);
         }
 
         [HttpPost]
@@ -61,8 +63,8 @@ namespace WebUI.Controllers
             }
             var registerResult = _authService.Register(entity, entity.Password);
             //_authService.CreateAccessToken(registerResult.Data);
-           return Json(registerResult);
- 
+            return Json(registerResult);
+
 
         }
     }

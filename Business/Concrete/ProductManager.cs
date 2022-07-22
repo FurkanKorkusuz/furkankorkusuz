@@ -35,7 +35,7 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("Admin")]
-        [CacheAspect]
+      //  [CacheAspect]
         public override IDataResult<List<Product>> GetList(QueryParameter queryParameter)
         {
             //IHttpContextAccessor _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();

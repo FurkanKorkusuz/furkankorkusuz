@@ -33,13 +33,8 @@ namespace MVC.Web.UI.Controllers
                 </li>
             </ul>
         ";
-            var roleClaims = httpContextAccessor.HttpContext.User.ClaimRoles();
-            if (roleClaims.Contains("Admin"))
-            {
-            }
-            //httpContextAccessor.HttpContext.Session.SetString("e23e", "def");
-            //var dd = httpContextAccessor.HttpContext.Session.GetString("Token");
-            if (! httpContextAccessor.HttpContext.User.IsAdmin())
+            
+            if (!httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
             {
                 htlmMenu = htlmMenu.Replace("[Admin]", " ");
                 htlmMenu = htlmMenu.Replace(
@@ -95,9 +90,7 @@ namespace MVC.Web.UI.Controllers
 
 
             return htlmMenu;
-        }
-
- 
+        } 
 
     }
 }

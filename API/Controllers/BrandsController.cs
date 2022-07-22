@@ -15,9 +15,11 @@ namespace API.Controllers
     public class BrandsController : ControllerBase
     {
         private IBrandService _brandService;
-        public BrandsController(IBrandService brandService)
+        private IProductService _pService;
+        public BrandsController(IBrandService brandService, IProductService pService)
         {
             _brandService = brandService;
+            _pService = pService;
         }
 
 
@@ -26,7 +28,7 @@ namespace API.Controllers
         //  [Authorize]
         public IActionResult GetList(QueryParameter queryParameter)
         {
-            var result = _brandService.GetList(queryParameter);
+            var result = _pService.GetList(queryParameter);
             if (result.Success)
             {
                 return Ok(result);

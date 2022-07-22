@@ -82,9 +82,10 @@ namespace Web.UI.MVC.Jquery
 
 
             // Sonradan eklendi. 
-            services.AddSession(options=>
+            services.AddSession(options =>
                     options.IdleTimeout = TimeSpan.FromMinutes(10)
                 );
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -109,12 +110,7 @@ namespace Web.UI.MVC.Jquery
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-
-
-          
-
             app.UseRouting();
-
 
             // Sonradan eklendi. 
             app.UseAuthentication(); // API ye kimler eriþebilir.
