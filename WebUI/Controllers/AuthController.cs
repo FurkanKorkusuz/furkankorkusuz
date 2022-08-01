@@ -41,7 +41,7 @@ namespace WebUI.Controllers
 
         }
         [HttpPost]
-        public IActionResult Login(UserForLoginDto userForLoginDto)
+        public IActionResult LoginEnter(UserForLoginDto userForLoginDto)
         {
         var userToLogin = _authService.Login(userForLoginDto);
             if (!userToLogin.Success)

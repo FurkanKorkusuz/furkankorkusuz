@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -47,6 +48,12 @@ namespace Core.Extensions
 
             // Validasyondaki hataları kullanıcıya göstermek için tuttum.
             if (e.GetType() == typeof(ValidationException)) 
+            {
+                message = e.Message;
+            }
+
+            // Authorization hatası
+            if (e.GetType() == typeof(AuthenticationException))
             {
                 message = e.Message;
             }

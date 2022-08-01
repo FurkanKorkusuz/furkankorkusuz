@@ -44,7 +44,7 @@ var List = {
         }
 
         Backend.Post(
-            'Login',
+            'LoginEnter',
             prt,
             function (response) {
 

@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebUI.Classes;
 
 namespace Web.UI.MVC.Jquery
 {
@@ -83,8 +84,14 @@ namespace Web.UI.MVC.Jquery
 
             // Sonradan eklendi. 
             services.AddSession(options =>
-                    options.IdleTimeout = TimeSpan.FromMinutes(10)
+                    options.IdleTimeout = TimeSpan.FromSeconds(5)
                 );
+
+            // Sonradan eklendi.
+            //services.AddControllersWithViews(options =>
+            //{
+            //    options.Filters.Add(typeof(RequestAuthenticationFilter));
+            //});
 
         }
 
@@ -102,6 +109,8 @@ namespace Web.UI.MVC.Jquery
                 app.UseHsts();
             }
 
+            //Exception için yazdýðýmýz middleware
+            app.ConfigureCustomExceptionMiddleware();
 
             // Yukarýda Cors ekledik burada çaðýrmamýz lazým (burada sýra önemli.)
             // Buradaki builder http://localhost:3000 sitesinden gelen her türlü (get,post,put,delete) istege cevap ver demektir. 

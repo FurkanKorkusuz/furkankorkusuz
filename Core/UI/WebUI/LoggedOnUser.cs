@@ -35,14 +35,41 @@ namespace Core.UI.WebUI
 
         public  bool HasRole(string role)
         {
+            if (_claims == null || _user == null)
+            {
+                return false;
+            }
             if (_claims.Any(x => x.OperationClaimName == "Admin"))
                 return true;
 
            return _claims.Any(x => x.OperationClaimName == role);
           
         }
+
+        public bool HasRoles(string[] roles)
+        {
+            if (_claims==null || _user == null)
+            {
+                return false;
+            }
+            if (_claims.Any(x => x.OperationClaimName == "Admin"))
+                return true;
+            foreach (string role in roles)
+            {
+                if (_claims.Any(x => x.OperationClaimName == role))
+                {
+                    return true;
+                } 
+            }
+            return false;
+
+        }
         public bool IsAdmin()
-        {   
+        {
+            if (_claims == null || _user == null)
+            {
+                return false;
+            }
             return _claims.Any(x => x.OperationClaimName == "Admin");
         }
     }

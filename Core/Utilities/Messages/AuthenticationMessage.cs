@@ -17,6 +17,8 @@ namespace Core.Utilities.Messages
 
         public static string UserRegistired = "Kullanıcı kayıt edildi.";
 
-        public static string UnAuthorize = "Yetkisiz Erişim.";
+        public static string UnAuthorize = "Yetkiniz Bulunmamaktadır.";
+
+        public static string NotLogin = "Lütfen Giriş Yapınız.";
     }
 }

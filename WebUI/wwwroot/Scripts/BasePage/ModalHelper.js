@@ -36,18 +36,23 @@ SC.Modal = function (id, buttons, show, append, modalClasses, heightPercentage, 
 
 		// The first div represents the outer div that holds the backdrop as well when the dialog gets opened.
 		$(append).append(
-			"<div class=\"modal" + (fadeIn ? " fade" : "") + (modalClasses ? " " + modalClasses : "") + "\" id=\"" + id + "\" role=\"dialog\" tabindex=\"-1\" aria-labelledby=\"ModalLabel\" aria-hidden=\"true\">" +
-			"<div class=\"modal-dialog\">" +
-			"<div class=\"modal-content\">" +
-			"<div class=\"modal-header\">" +
-			"<h4 class=\"modal-title\" id=\"ModalLabel\"></h4>" +
-			(withCloseButton ? "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>" : "") +
-			"</div>" +
-			"<div class=\"modal-body\"></div>" +
-			(buttonsHtml ? buttonsHtml : "") +
-			"</div>" +
-			"</div>" +
-			"</div>");
+			`<div class="modal ${(fadeIn ? " fade " : "")} ${(modalClasses ? modalClasses : "")}"
+			id="${id}" role="dialog" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content" >
+						<div class="modal-header">
+							<h4 class="modal-title" id="ModalLabel">
+								${(withCloseButton ? `<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>` : "")}
+							</h4>
+						</div>
+						<div class="modal-body">
+						</div>
+						${(buttonsHtml ? buttonsHtml : "")}
+					</div>
+				</div>
+			</div>`
+		);
+
 
 		this.$Modal = $(append).children("#" + id);
 	}
