@@ -30,16 +30,16 @@
 		...!
 		</div>*@
 
-	<nav id="baseNav" class="navbar navbar-expand-md navbar-left" style="background-color: #005555;border-bottom: 2px solid #fff;">
+ <nav id="baseNav" class="navbar navbar-expand-md navbar-left" style="background-color: #005555;border-bottom: 2px solid #fff;">
 
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: 5px solid #fff;">
-			<span style="color: #fff;"><i class="fas fa-bars"></i></span>
-		</button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: 5px solid #fff;">
+            <span style="color: #fff;"><i class="fas fa-bars"></i></span>
+        </button>
 
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			@Html.Raw(MVC.Web.UI.Controllers.BasePage.BasePageMenu())
-		</div>
-	</nav>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            @Html.Raw(MVC.Web.UI.Controllers.BasePage.BasePageMenu())
+        </div>
+    </nav>
 
 
 
@@ -65,9 +65,20 @@
 
 	<main role="main">
 		<div class="row">
-			
 
-			<div id="renderBody" class="render-body col-xl-12 col-md-12 col-lg-12 col-sm-12">
+			<div id="leftBar" class="col-xl-2 col-md-2 col-lg-2 col-sm-12" style=" border-bottom: 3px solid #fff;text-align:center;background-color:#fcfcfc;">
+                <div style="padding:0px;">
+                    <img src="/Uploads/Images/fk.com/fk-profil-square.jpg" style="width:100%;border-radius:50%;">
+                </div>
+                <h3 style="color:#777;">Furkan KORKUSUZ</h3>
+                <i>
+                    Mekatronic Engineer <br>
+                    Software Developer<br><br>
+                    <b>”Öğrenmenin sonsuzluğunu keşfettim...”</b>
+                </i>
+            </div>
+
+			<div id="renderBody" class="render-body col-xl-10 col-md-10 col-lg-10 col-sm-12">
 				@RenderBody()
 			</div>
 

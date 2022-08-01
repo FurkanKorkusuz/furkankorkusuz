@@ -84,7 +84,7 @@ namespace Web.UI.MVC.Jquery
 
             // Sonradan eklendi. 
             services.AddSession(options =>
-                    options.IdleTimeout = TimeSpan.FromSeconds(5)
+                    options.IdleTimeout = TimeSpan.FromMinutes(15)
                 );
 
             // Sonradan eklendi.
