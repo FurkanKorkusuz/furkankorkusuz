@@ -25,7 +25,7 @@ namespace Core.DataAccess.Connections
                 {
                     server = ProductionServerConnectionString;
                 }
-                  //  return string.Format("Server={0};Database=Aslan;Uid=furkank7_Aslan;Pwd=%5f$4K#3;pooling='true';Max Pool Size=400;", server);
+                  // return string.Format("Server={0};Database=Aslan;Uid=furkank7_Aslan;Pwd=%5f$4K#3;pooling='true';Max Pool Size=400;", server);
                 return string.Format("Server={0};Database=ECommerceDB;Uid=sa;Pwd=Alkapida.123;pooling='true';Max Pool Size=400;", server);
             }
         }
